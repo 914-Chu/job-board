@@ -28,7 +28,7 @@ jobs:
         run: zip release.zip ./* -r
 
       - name: ls
-        run: ls -R
+        run: (echo $PWD) && (tsc --project .) && (cd dist && ls)
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
