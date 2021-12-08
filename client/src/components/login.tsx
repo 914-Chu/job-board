@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./login.css";
 import bg from "../assests/quad.jpg";
 import logo from "../assests/uiuc logo.png"

@@ -1,11 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-import App from "./App";
 import Login from "./components/login";
-import reportWebVitals from "./reportWebVitals";
 
 const rootElement = document.getElementById("root");
 render(

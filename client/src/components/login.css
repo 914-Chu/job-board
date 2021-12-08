@@ -40,7 +40,7 @@
     height: 65%; 
     position: fixed; 
     left: 5.5%; 
-    top: 17%; 
+    top: 16%; 
     z-index: 1;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;
@@ -50,28 +50,28 @@
 
 #welcome{
     font-size: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 5%;
 }
 
 .formcont{
-    margin-top: 50px;
+    margin-top: 16%;
 }
 
 .label{
-    margin-bottom: 15px;
+    margin-bottom: 5%;
 }
 
 .inputbox{
-    width: 300px;
-    height: 25px;
+    width: 87%;
+    line-height: 230%;
 }
 
 .loginbtn{
     background-color: #dd6b4d;
     border: none;
     text-align: center;
-    width: 308px;
-    height: 34px;
-    margin-top: 65px;
+    width: 89%;
+    line-height: 250%;
+    margin-top: calc(65 / 16 * 1rem);
 }
 
