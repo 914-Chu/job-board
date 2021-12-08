@@ -2,6 +2,7 @@ import React from "react";
 import "./login.css";
 import bg from "../assests/quad.jpg";
 import logo from "../assests/uiuc logo.png"
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -22,15 +23,15 @@ const Login = () => {
               <input type="text" className="inputbox"/>
             <p className="label">PASSWORD:</p>
               <input type="text" className="inputbox"/>
-            <button type="submit" className="loginbtn">
-              Log In
-            </button>
+            <Link to="/main">
+              <button type="submit" className="loginbtn">
+                Log In
+              </button>
+            </Link>
           </form>
         </div>
       </div>
     </div>
-    
-  
     );
 };
 

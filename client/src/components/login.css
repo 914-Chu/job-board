@@ -75,3 +75,12 @@
     margin-top: calc(65 / 16 * 1rem);
 }
 
+.loginbtn:hover{
+    background-color: #e25632;
+}
+
+.loginbtn:active{
+    background-color: #e25632;
+    box-shadow: 3px 5px rgb(146, 146, 146);
+    transform: translateY(4px);
+}
