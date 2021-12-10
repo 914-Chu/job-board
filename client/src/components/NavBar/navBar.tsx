@@ -30,7 +30,7 @@ const NavBar = () => {
                         Find A Job
                     </div>
                 </Nav.Link>
-                <Nav.Link className="navbar-link" href="#">
+                <Nav.Link className="navbar-link" href="/postJob">
                     <img width="auto"
                         height="15"
                         className="d-inline-block align-top"

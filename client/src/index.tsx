@@ -9,24 +9,28 @@ import Review from "./components/review";
 
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PostJob from "./components/postJob";
 
 const rootElement = document.getElementById("root");
 render(
-  <BrowserRouter>
-    <div>
-        <NavBar/>
-        <Routes>
+    <div id="background">
+        <BrowserRouter>
+            <div>
+                <NavBar/>
+                <Routes>
 
-        </Routes>
-    </div>
-    <Routes>
-      <Route path="/" element={<Login />}/>
-      <Route path="/login" element={<Login />}/>
-      <Route path="/main" element={<Main />}/>
-      <Route path="/detail" element={<Detail />}/>
-      <Route path="/review" element={<Review />}/>
-    </Routes>
-  </BrowserRouter>,
+                </Routes>
+            </div>
+            <Routes>
+            <Route path="/" element={<Login />}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/main" element={<Main />}/>
+            <Route path="/detail" element={<Detail />}/>
+            <Route path="/review" element={<Review />}/>
+            <Route path="/postJob" element={<PostJob />}/>
+            </Routes>
+        </BrowserRouter>
+    </div>,
   rootElement
 );
 

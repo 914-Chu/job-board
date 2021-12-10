@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div id="background">
-      <img src={bg} className="fit" alt=""/>
+    <div>
       <div id="logo">
         <img src={logo} className="fit2" alt=""/>
         <p className="imgtxt">ON-CAMPUS JOB BOARD</p>
