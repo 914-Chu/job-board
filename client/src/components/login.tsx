@@ -1,6 +1,5 @@
 import React from "react";
 import "./login.css";
-import bg from "../assests/quad.jpg";
 import logo from "../assests/uiuc logo.png"
 import { Link } from "react-router-dom";
 
