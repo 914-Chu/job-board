@@ -1,13 +1,11 @@
 import React from "react";
 import "./login.css";
-import bg from "../assests/quad.jpg";
-import logo from "../assests/uiuc logo.png"
+import logo from "../assests/uiuc logo.png";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div id="background">
-      <img src={bg} className="fit" alt=""/>
+    <div>
       <div id="logo">
         <img src={logo} className="fit2" alt=""/>
         <p className="imgtxt">ON-CAMPUS JOB BOARD</p>

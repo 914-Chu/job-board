@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import bg from "../assests/quad.jpg";
 import "./review.css";
 
 const Review = () => {
-  let Rating = require("react-rating");
-  React.createElement(Rating);
-  const [rating, setRating] = useState(0);
+  // let Rating = require("react-rating");
+  // React.createElement(Rating);
+  // const [rating, setRating] = useState(0);
 
-  const handleClick = (rate: number) => {
-    setRating(rate);
-  };
-
+  // const handleClick = (rate: number) => {
+  //   setRating(rate);
+  // };
   return (
     <div id="bg">
       <img src={bg} className="fitimg" alt="" />
       <div className="card">
-        <div className="avgrate">
+        {/* <div className="avgrate">
           <Rating
             start={0}
             stop={5}
@@ -25,7 +24,7 @@ const Review = () => {
             direction="ltr"
             onClick={handleClick}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

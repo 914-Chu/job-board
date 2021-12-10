@@ -1,0 +1,30 @@
+.color-nav {
+    background-color: #1C4B82;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.brand-text {
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.navbar-links {
+    text-transform: capitalize;
+    float: right;
+    gap: 15px;
+}
+.navbar-links * {
+    font-size: 14px;
+    color: white !important;
+    font-weight: bold;
+}
+.navbar-link {
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+}
