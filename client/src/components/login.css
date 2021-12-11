@@ -1,4 +1,4 @@
-#background {
+#login-bg {
     background: url("../assests/quad.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -10,7 +10,7 @@
     height: 13%; 
     position: fixed; 
     left: 53%; 
-    top: 41%; 
+    top: 43.5%; 
     z-index: 0;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;
@@ -40,7 +40,7 @@
     height: 100%; 
     position: fixed; 
     left: 4.3%; 
-    top: 17%; 
+    top: 21%; 
     z-index: 1;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;

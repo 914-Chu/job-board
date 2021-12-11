@@ -3,7 +3,9 @@ import "./main.css";
 
 const Main = () => {
   return (
-    <h1>main</h1>
+    <div id="main-bg">
+        <h1>main</h1>
+    </div>
   );
 }
 

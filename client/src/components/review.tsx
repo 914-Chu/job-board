@@ -3,12 +3,11 @@ import bg from "../assests/quad.jpg";
 import "./review.css";
 
 const Review = () => {
-
   return (
-    <div id="bg">
-      <img src={bg} className="fitimg" alt="" />
-      <div className="card">
-      </div>
+    <div id="review-bg">
+        <img src={bg} className="fit" alt=""/>
+        <div className="card">
+        </div>
     </div>
   );
 };
