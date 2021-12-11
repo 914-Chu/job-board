@@ -1,7 +1,7 @@
 import React from "react";
 import "./detail.css";
 import { Link } from "react-router-dom";
-import { Card, Form, Button, Col, Row } from "react-bootstrap";
+import { Card, Button} from "react-bootstrap";
 
 const Detail = () => {
   return (
