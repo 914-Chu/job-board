@@ -7,7 +7,7 @@ import "./navBar.css";
 
 const NavBar = () => {
   return (
-    <Navbar className="color-nav" variant="dark">
+    <Navbar className="color-nav" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand className="brand" href="/main">
           <img

@@ -15,18 +15,14 @@ const rootElement = document.getElementById("root");
 render(
     <div className="shared-background">
         <BrowserRouter>
-            <div>
-                <NavBar/>
-                <Routes>
-                </Routes>
-            </div>
+            <NavBar/>
             <Routes>
-            <Route path="/" element={<Login />}/>
-            <Route path="/login" element={<Login />}/>
-            <Route path="/main" element={<Main />}/>
-            <Route path="/detail" element={<Detail />}/>
-            <Route path="/review" element={<Review />}/>
-            <Route path="/postJob" element={<PostJob />}/>
+                <Route path="/" element={<Login />}/>
+                <Route path="/login" element={<Login />}/>
+                <Route path="/main" element={<Main />}/>
+                <Route path="/detail" element={<Detail />}/>
+                <Route path="/review" element={<Review />}/>
+                <Route path="/postJob" element={<PostJob />}/>
             </Routes>
         </BrowserRouter>
     </div>,
