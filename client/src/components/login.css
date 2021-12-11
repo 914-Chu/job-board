@@ -36,11 +36,11 @@
 }
 
 .leftCard{
-    width: 34%; 
+    width: 27%; 
     height: 100%; 
     position: fixed; 
     left: 4%; 
-    top: 21%; 
+    top: 26%; 
     z-index: 1;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;
@@ -67,22 +67,22 @@
     margin-bottom: 5%;
 }
 
-.loginbtn{
+#loginbtn{
     background-color: #dd6b4d;
     border: none;
     text-align: center;
-    width: 80%;
-    line-height: 240%;
-    margin-top: 10%;
+    width: 100%;
+    line-height: 180%;
+    margin-top: 7%;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;
 }
 
-.loginbtn:hover{
+#loginbtn:hover{
     background-color: #e25632;
 }
 
-.loginbtn:active{
+#loginbtn:active{
     background-color: #e25632;
     box-shadow: 3px 5px rgb(146, 146, 146);
     transform: translateY(4px);
