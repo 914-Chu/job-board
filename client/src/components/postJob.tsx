@@ -58,7 +58,6 @@ const PostJob = () => {
                                 <option>Not Selected</option>
                                 <option value="full-time">Full Time</option>
                                 <option value="part-time">Part Time</option>
-                                <option value="internship">Internship</option>
                             </Form.Select>
                         </Col>
                     </Form.Group>

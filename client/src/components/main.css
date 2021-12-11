@@ -1,6 +1,7 @@
 #main-bg {
     height: 100%;
     background-color: #fff;
+    padding: 0 150px;
 }
 
 .main-search-container,
@@ -10,7 +11,7 @@
 }
 
 .main-search-container .form-control {
-    border-width: 0 1px 1px 0;
+    border-width: 0 1px 1px 1px;
     border-radius: 0;
     padding: 0.7rem 2rem;
 }
@@ -31,7 +32,7 @@
 }
 
 .main-section-container > * {
-    border-width: 0 1px 1px 0;
+    border-width: 0 1px 1px 1px;
     border-color: #ced4da;
     border-style: solid;
     border-radius: 0;
@@ -39,4 +40,13 @@
 }
 .main-filter-section {
     display: grid;
+    grid-gap: 1rem;
+    padding: 0.7rem 2rem;
+}
+.main-filter-section .form-check {
+    padding: 0 2rem;
+}
+.main-filter-section .form-label {
+    font-weight: 800;
+    color: #A6A6A6;
 }
