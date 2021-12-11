@@ -1,7 +1,36 @@
 #postJob-bg {
-    height: 100%;
+    height: 708px;
     background: url("../assests/quad.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    padding: 0px 300px;
+}
+
+.postJob-card-container {
+    border-radius: 16px;
+}
+
+.postJob-title {
+    padding: 20px 20px 10px;
+    text-align: center;
+    color: #1C4B82;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    border-bottom: 4px solid #1C4B82;
+}
+
+#postJob-form {
+    padding: 0 20px;
+}
+#postJob-submit {
+    background-color: #DD6B4D;
+    border-color: #DD6B4D;
+    padding: auto 50px;
+    width: 100%;
+}
+
+textarea {
+    resize: none;
 }
