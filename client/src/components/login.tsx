@@ -4,13 +4,14 @@ import logo from "../assests/uiuc logo.png"
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  document.body.style.overflow = "hidden";
   return (
     <div id="login-bg">
       <div id="logo">
         <img src={logo} className="fit2" alt="" />
         <p className="imgtxt">ON-CAMPUS JOB BOARD</p>
       </div>
-      <div className="containleft">
+      <div className="containleft">      </div>
         <div className="leftCard">
           <div className="welcome">
             <p id="welcome">WELCOME BACK</p>
@@ -30,7 +31,6 @@ const Login = () => {
             </form>
           </div>
         </div>
-      </div>
     </div>
   );
 };
