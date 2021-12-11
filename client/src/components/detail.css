@@ -1,0 +1,73 @@
+#detail-bg {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#detail-card-left{
+    width: 58%;
+    height: 100%;
+    border-color: transparent;
+}
+
+#detail-card-left-top{
+    height: 48%;
+    border-color: transparent;
+}
+
+#main-title{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 170%;
+    font-weight: 650;
+}
+
+#detail-card-left-bottom{
+    height: 52%;
+    border-color: transparent;
+}
+
+.left-top-property{
+    margin-top: 0.8%;
+    display: flex;
+}
+
+.property-title{
+    width: 20%;
+}
+
+.property-text{
+    position: relative;
+    left: 10%;
+}
+
+#applybtn{
+    background-color: #dd6b4d;
+    border: none;
+    text-align: center;
+    width: 20%;
+    line-height: 180%;
+    margin-top: 2%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 800;
+}
+
+#applybtn:hover{
+    background-color: #e25632;
+}
+
+#applybtn:active{
+    background-color: #e25632;
+    box-shadow: 3px 5px rgb(146, 146, 146);
+    transform: translateY(4px);
+}
+
+.detail-address{
+    display: flex;
+}
+
+.detail-busroute{
+    width:50%;
+    height:100%;
+    padding-left: 0%;
+}
+
