@@ -1,5 +1,6 @@
 #postJob-bg {
-    height: 708px;
+    height: 100%;
+    overflow: auto;
     background: url("../assests/quad.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -8,7 +9,10 @@
 }
 
 .postJob-card-container {
+    height: 600px;
     border-radius: 16px;
+    
+    font-size: 14px;
 }
 
 .postJob-title {
