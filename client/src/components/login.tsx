@@ -2,7 +2,7 @@ import React from "react";
 import "./login.css";
 import logo from "../assests/uiuc logo.png"
 import { Link } from "react-router-dom";
-import { Card, Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Button} from "react-bootstrap";
 
 const Login = () => {
   document.body.style.overflow = "hidden";
