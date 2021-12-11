@@ -18,7 +18,6 @@ render(
             <div>
                 <NavBar/>
                 <Routes>
-
                 </Routes>
             </div>
             <Routes>

@@ -27,12 +27,20 @@
     height:100%;
 }
 
+.containleft{
+    background-color: white;
+    width: 38%;
+    height: 100%;
+    z-index:2;
+    position: fixed;
+}
+
 .leftCard{
-    width: 27%; 
-    height: 65%; 
+    width: 34%; 
+    height: 100%; 
     position: fixed; 
-    left: 5.5%; 
-    top: 16%; 
+    left: 4.3%; 
+    top: 17%; 
     z-index: 1;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;
@@ -42,29 +50,33 @@
 
 #welcome{
     font-size: 30px;
-    margin-bottom: 5%;
+    margin-bottom: 0;
 }
 
 .formcont{
-    margin-top: 16%;
+    margin-top: 10%;
 }
 
 .label{
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 .inputbox{
     width: 87%;
-    line-height: 230%;
+    line-height: 220%;
+    margin-bottom: 5%;
 }
 
 .loginbtn{
     background-color: #dd6b4d;
     border: none;
     text-align: center;
-    width: 89%;
-    line-height: 250%;
-    margin-top: calc(65 / 16 * 1rem);
+    width: 87%;
+    line-height: 240%;
+    margin-top: 10%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
 }
 
 .loginbtn:hover{
