@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-.card{
+.review-card{
     width: 75%; 
     height: 82%; 
     left: 12%; 
@@ -17,9 +17,37 @@
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgb(117, 117, 117);
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 140%;
+}
+
+#review-card-title{
+    position: relative;
+    font-size: 210%;
+    font-weight: 700;
+    top: 1.5%;
+    left: 3.9%;
+}
+
+#review-content{
+    position: relative;
+    padding-top: 0.5%;
+    left: 2.5%;
+}
+
+.review-form{
+    font-size: 113%;
     font-weight: 600;
 }
+
+#headline{
+    width: 90%;
+    height: 40px;
+}
+
+#review{
+    width: 90%;
+    height: 40px;
+}
+
 
 .content{
     position: relative;
@@ -49,22 +77,22 @@
     justify-content: space-between;
 }
 
-.submitbtn{
+#submitbtn{
     background-color: #dd6b4d;
     border: none;
     text-align: center;
-    width: 24%;
+    width: 22%;
     line-height: 180%;
-    margin-top: 1.5%;
+    margin-top: 1%;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;
 }
 
-.submitbtn:hover{
+#submitbtn:hover{
     background-color: #e25632;
 }
 
-.submitbtn:active{
+#submitbtn:active{
     background-color: #e25632;
     box-shadow: 3px 5px rgb(146, 146, 146);
     transform: translateY(4px);
