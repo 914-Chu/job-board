@@ -1,6 +1,6 @@
 import React from "react";
 import "./postJob.css";
-import { Card, Form, Button, Col, Row } from 'react-bootstrap';
+import { Card, Form, Button, Col, Row, InputGroup } from 'react-bootstrap';
 
 const PostJob = () => {
   return (
@@ -43,7 +43,10 @@ const PostJob = () => {
                             Hourly Pay*
                         </Form.Label>
                         <Col sm="9">
-                            <Form.Control type="number" min="0.01" step="0.01"  size="sm" placeholder="Hourly Pay" required/>
+                            <InputGroup>
+                                <InputGroup.Text>$</InputGroup.Text>
+                                <Form.Control type="number" min="0.01" step="0.01"  size="sm" placeholder="Hourly Pay" required/>
+                            </InputGroup>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="job-type">

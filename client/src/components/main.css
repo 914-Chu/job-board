@@ -2,3 +2,41 @@
     height: 100%;
     background-color: #fff;
 }
+
+.main-search-container,
+[class^="main-section"]{
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.main-search-container .form-control {
+    border-width: 0 1px 1px 0;
+    border-radius: 0;
+    padding: 0.7rem 2rem;
+}
+.main-search-container .btn {
+    border-radius: 0;
+    border-color: #DD6B4D;
+    background-color: #DD6B4D;
+}
+
+.main-section-titles {
+    border-width: 0 0 1px 0;
+    border-color: #ced4da;
+    border-style: solid;
+}
+.main-section-titles > * {
+    padding: 0.7rem 2rem;
+    margin: 0;
+}
+
+.main-section-container > * {
+    border-width: 0 1px 1px 0;
+    border-color: #ced4da;
+    border-style: solid;
+    border-radius: 0;
+    padding: 0.7rem 2rem;
+}
+.main-filter-section {
+    display: grid;
+}
