@@ -3,7 +3,7 @@ import "./postJob.css";
 
 const PostJob = () => {
   return (
-    <div>
+    <div id="postJob-bg">
         <div className="card-container">
 
         </div>

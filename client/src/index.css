@@ -21,8 +21,13 @@ html, body {
     height: 100%;
 }
 
-#background {
+.shared-background {
+    height: 100%;
+}
+
+[id$="-bg"] {
     height: 100%; 
     top: 0px; 
     z-index: -1;
 }
+

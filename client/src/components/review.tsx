@@ -4,7 +4,7 @@ import "./review.css";
 
 const Review = () => {
   return (
-    <div>
+    <div id="review-bg">
         <img src={bg} className="fit" alt=""/>
         <div className="card">
 

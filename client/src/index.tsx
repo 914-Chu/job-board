@@ -13,7 +13,7 @@ import PostJob from "./components/postJob";
 
 const rootElement = document.getElementById("root");
 render(
-    <div id="background">
+    <div className="shared-background">
         <BrowserRouter>
             <div>
                 <NavBar/>
