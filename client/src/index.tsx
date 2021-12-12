@@ -13,9 +13,10 @@ import PostJob from "./components/postJob";
 
 const rootElement = document.getElementById("root");
 render(
-    <div className="shared-background">
-        <BrowserRouter>
-            <NavBar/>
+    <BrowserRouter>
+        <NavBar/>
+
+        <div className="shared-background">
             <Routes>
                 <Route path="/" element={<Login />}/>
                 <Route path="/login" element={<Login />}/>
@@ -24,8 +25,8 @@ render(
                 <Route path="/review" element={<Review />}/>
                 <Route path="/postJob" element={<PostJob />}/>
             </Routes>
-        </BrowserRouter>
-    </div>,
+        </div>
+    </BrowserRouter>,
   rootElement
 );
 

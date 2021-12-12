@@ -23,6 +23,7 @@ html, body {
 
 .shared-background {
     height: 100%;
+    padding-top: 72px;
 }
 
 [id$="-bg"] {

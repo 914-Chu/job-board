@@ -52,5 +52,14 @@
     color: #A6A6A6;
 }
 
-.main-section-jobs {
+.main-jobs-section {
+    display: grid;
+    grid-gap: 3%;
+    grid-template-columns: repeat(3, 30%);
+    height: 580px;
+    overflow: auto;
+}
+
+.extra {
+    height: 100px;
 }

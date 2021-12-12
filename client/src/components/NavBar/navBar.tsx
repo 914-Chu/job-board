@@ -8,7 +8,7 @@ import "./navBar.css";
 
 const NavBar = () => {
   return (
-    <Navbar className="color-nav" variant="dark" sticky="top">
+    <Navbar className="app-navbar color-nav" variant="dark" fixed="top">
       <Container>
           <Nav.Link as={Link} to="/main">
             <Navbar.Brand className="brand">

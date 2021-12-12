@@ -2,6 +2,7 @@ import React from "react";
 import "./main.css";
 import { Col, Form, Row} from "react-bootstrap";
 import {FaStar} from "react-icons/fa";
+import JobCard from "./JobCard/jobCard";
 
 const Main = () => {
     const getNStars = (n: number) => {
@@ -140,8 +141,17 @@ const Main = () => {
                 </section>
 
                 <section className="main-jobs-section">
-                    hii
+                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
+                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
+                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
+                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
+                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
+                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
+                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
                 </section>
+            </div>
+            <div className="extra">
+                
             </div>
         </div>
     );
