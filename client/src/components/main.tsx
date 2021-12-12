@@ -1,6 +1,6 @@
 import React from "react";
 import "./main.css";
-import { Form, Row, Col, InputGroup, Button } from "react-bootstrap";
+import { Form, Row} from "react-bootstrap";
 import {FaStar} from "react-icons/fa";
 
 const Main = () => {
@@ -84,6 +84,22 @@ const Main = () => {
                                 {getNStars(5)}
                             </Form.Check.Label>
                         </Form.Check>
+                    </Form.Group>
+
+                    <Form.Group as={Row} controlId="job-pay-range">
+                        <Form.Label>
+                            Hourly Pay
+                        </Form.Label>
+                        <Form.Check type="checkbox" label="Full time" />
+                        <Form.Check type="checkbox" label="Part time" />
+                    </Form.Group>
+
+                    <Form.Group as={Row} controlId="job-weekly-hours-range">
+                        <Form.Label>
+                            Weekly Hours
+                        </Form.Label>
+                        <Form.Check type="checkbox" label="Full time" />
+                        <Form.Check type="checkbox" label="Part time" />
                     </Form.Group>
                 </section>
 

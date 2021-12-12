@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from "react-bootstrap";
 import findJob from "../../assests/icons8-job-seeker-50.png";
 import newJob from "../../assests/icons8-new-job-50.png";
@@ -9,20 +10,22 @@ const NavBar = () => {
   return (
     <Navbar className="color-nav" variant="dark" sticky="top">
       <Container>
-        <Navbar.Brand className="brand" href="/main">
-          <img
-            width="auto"
-            height="30"
-            className="d-inline-block align-top"
-            src={mainLogo}
-            alt="ilogo"
-          />
-          <div className="brand-text d-inline-block align-middle">
-            On-Campus Job Board
-          </div>
-        </Navbar.Brand>
+          <Nav.Link as={Link} to="/main">
+            <Navbar.Brand className="brand">
+                <img
+                    width="auto"
+                    height="30"
+                    className="d-inline-block align-top"
+                    src={mainLogo}
+                    alt="ilogo"
+                />
+                <div className="brand-text d-inline-block align-middle">
+                    On-Campus Job Board
+                </div>
+            </Navbar.Brand>
+        </Nav.Link>
         <Nav className="ml-auto navbar-links">
-          <Nav.Link className="navbar-link" href="/main">
+          <Nav.Link as={Link} className="navbar-link" to="/main">
             <img
               width="auto"
               height="15"
@@ -32,7 +35,7 @@ const NavBar = () => {
             />
             <div className="align-middle">Find A Job</div>
           </Nav.Link>
-          <Nav.Link className="navbar-link" href="/postJob">
+          <Nav.Link as={Link} className="navbar-link" to="/postJob">
             <img
               width="auto"
               height="15"
