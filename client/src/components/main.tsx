@@ -142,27 +142,27 @@ const Main = () => {
 
                 <section className="main-jobs-section">
                     <JobCard title="Full-Stack Developer"
-                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        description="This is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
                         rating={3}
                         link="#" />
                     <JobCard title="Frontend Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        description="TThis is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
                         rating={4}
                         link="#" />
                     <JobCard title="Development and Operations Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        description="TThis is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
                         rating={5}
                         link="#" />
                     <JobCard title="Development and Operations Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        description="TThis is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
                         rating={1}
                         link="#" />
                     <JobCard title="Development and Operations Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        description="TThis is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
                         rating={2}
                         link="#" />
                     <JobCard title="Development and Operations Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        description="TThis is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
                         rating={2}
                         link="#" />
                 </section>

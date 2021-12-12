@@ -18,13 +18,28 @@
 
 .job-body {
     display: grid;
-    grid-gap: 1px;
+    grid-gap: 1rem;
     padding-top: 0px;
 }
 .job-body > * {
     height: fit-content;
 }
 
+.job-description {
+    height: 5.1rem;
+    display: -webkit-box;
+    max-width: 200px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 .stars-container {
     padding: 0 !important;
+}
+
+.job-apply.btn {
+    background-color: #1C4B82;
+    border-color: #1C4B82;
+
+    text-transform: uppercase;
 }

@@ -30,7 +30,7 @@ function JobCard({ title, description, rating, link }:JobProps){
                 {title}
             </Card.Title>
             <Card.Body className="job-body">
-                <div>
+                <div className="job-description">
                     {description}
                 </div>
                 <div className="job-rating">
@@ -39,7 +39,7 @@ function JobCard({ title, description, rating, link }:JobProps){
                     </div>
                 </div>
                 <div>
-                    <Button>
+                    <Button className="job-apply">
                         Apply
                     </Button>
                 </div>
