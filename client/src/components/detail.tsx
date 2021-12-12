@@ -1,10 +1,57 @@
 import React from "react";
 import "./detail.css";
+import { Link } from "react-router-dom";
+import { Card, Button} from "react-bootstrap";
 
 const Detail = () => {
   return (
-    <h1>detail</h1>
+    <div id="detail-bg">
+      <Card id="detail-card-left">
+        <Card id="detail-card-left-top">
+          <Card.Body>
+            <Card.Title id="main-title">Job Title</Card.Title>
+            <Card.Text>
+              This is the description for the fullstack web development intern
+              postion. It is used to provide information about the role overall
+              and add any relevant information that does not fit in the rest of
+              the fields.
+            </Card.Text>
+            <div className="left-top-property">
+              <Card.Title className="property-title">Job Type</Card.Title>
+              <Card.Text className="property-text">Full time</Card.Text>
+            </div>
+            <div className="left-top-property">
+              <Card.Title className="property-title">Weekly Hours</Card.Title>
+              <Card.Text className="property-text">15-18</Card.Text>
+            </div>
+            <div className="left-top-property">
+              <Card.Title className="property-title">Hourly Pay</Card.Title>
+              <Card.Text className="property-text">$18</Card.Text>
+            </div>
+            <Link to="/main">
+              <Button type="submit" id="applybtn">
+                Apply
+              </Button>
+            </Link>
+          </Card.Body>
+        </Card>
+        <Card id="detail-card-left-bottom">
+          <Card.Body>
+            <div className="detail-address">
+              <Card.Title className="property-title">Location:</Card.Title>
+              <Card.Text className="property-text">
+                1234 Illini Lane, Urbana IL 61801
+              </Card.Text>
+            </div>
+            <Card.Body className="detail-busroute">
+              <Card.Title>Nearby Bus Route</Card.Title>
+              <Card.Text>blah blah</Card.Text>
+            </Card.Body>
+          </Card.Body>
+        </Card>
+      </Card>
+    </div>
   );
-}
+};
 
 export default Detail;
