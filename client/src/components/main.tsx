@@ -141,17 +141,31 @@ const Main = () => {
                 </section>
 
                 <section className="main-jobs-section">
-                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
-                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
-                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
-                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
-                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
-                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
-                    <JobCard title="Full-Stack Developer" description="Blablabla"></JobCard>
+                    <JobCard title="Full-Stack Developer"
+                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        rating={3}
+                        link="#" />
+                    <JobCard title="Frontend Developer" 
+                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        rating={4}
+                        link="#" />
+                    <JobCard title="Development and Operations Developer" 
+                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        rating={5}
+                        link="#" />
+                    <JobCard title="Development and Operations Developer" 
+                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        rating={1}
+                        link="#" />
+                    <JobCard title="Development and Operations Developer" 
+                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        rating={2}
+                        link="#" />
+                    <JobCard title="Development and Operations Developer" 
+                        description="This is the description for the fullstack web development intern postion. It is used to provide..."
+                        rating={2}
+                        link="#" />
                 </section>
-            </div>
-            <div className="extra">
-                
             </div>
         </div>
     );

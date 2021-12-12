@@ -1,6 +1,30 @@
 .job-card-container {
     height: 250px;
     border-radius: 16px !important;
+    box-shadow: 0 0 4px 1px rgb(0 0 0 / 5%), 1px 1px 1px 1px rgb(0 0 0 / 5%);
+    padding: 10px;
     
     font-size: 14px;
+}
+
+.job-title.card-title {
+    padding: 0 1rem;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    height: 2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.job-body {
+    display: grid;
+    grid-gap: 1px;
+    padding-top: 0px;
+}
+.job-body > * {
+    height: fit-content;
+}
+
+.stars-container {
+    padding: 0 !important;
 }
