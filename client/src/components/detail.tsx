@@ -1,9 +1,13 @@
 import React from "react";
 import "./detail.css";
 import { Link } from "react-router-dom";
-import { Card, Button} from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
+import Stars from "./stars";
+import Student from "./student";
 
 const Detail = () => {
+  let rates = [5, 3, 2, 4, 3];
+
   return (
     <div id="detail-bg">
       <Card id="detail-card-left">
@@ -49,6 +53,62 @@ const Detail = () => {
             </Card.Body>
           </Card.Body>
         </Card>
+      </Card>
+      <Card id="detail-card-right">
+        <Card.Body>
+          <Card.Title id="review-title">Student Review</Card.Title>
+          <div className="review-star">
+            <Card.Text className="star-title">Overall</Card.Text>
+            <Stars starsize={33} starval={3} />
+          </div>
+          <div className="review-star">
+            <Card.Text className="star-title">Work Life Balance</Card.Text>
+            <Stars starsize={33} starval={3} />
+          </div>
+          <div className="review-star">
+            <Card.Text className="star-title">Culture</Card.Text>
+            <Stars starsize={33} starval={3} />
+          </div>
+          <div className="review-star">
+            <Card.Text className="star-title">Transportation</Card.Text>
+            <Stars starsize={33} starval={3} />
+          </div>
+          <div className="review-star">
+            <Card.Text className="star-title">Flexibility</Card.Text>
+            <Stars starsize={33} starval={3} />
+          </div>
+          <Link to="/review">
+            <Button type="submit" id="rvwbtn">
+              Review This Job
+            </Button>
+          </Link>
+          <Card id="student-review">
+            <Student
+              id={"123456789"}
+              date={new Date()}
+              name={"name"}
+              headline={"headline"}
+              review={"review"}
+              rate={rates}
+            />
+            <Student
+              id={"123456789"}
+              date={new Date()}
+              name={"name"}
+              headline={"headline"}
+              review={"review"}
+              rate={rates}
+            />
+            <Student
+              id={"123456789"}
+              date={new Date()}
+              name={"name"}
+              headline={"headline"}
+              review={"review"}
+              rate={rates}
+            />
+          </Card>
+        </Card.Body>
       </Card>
     </div>
   );
