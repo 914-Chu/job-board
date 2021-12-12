@@ -5,3 +5,19 @@
 #student-content{
     border-radius: 0;
 }
+
+#student-name{
+    margin-bottom: 0;
+}
+
+.student-headline{
+    margin-left: 3%;
+    font-size:105%;
+    font-weight: 500;
+}
+
+#student-date{
+    margin-bottom: 0;
+    font-size: 70%;
+    color: grey;
+}

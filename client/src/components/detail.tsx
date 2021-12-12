@@ -88,7 +88,7 @@ const Detail = () => {
               date={new Date()}
               name={"name"}
               headline={"headline"}
-              review={"review"}
+              review={"review aldkjfa;sdlkfja;ejfaslkdjfa;lsdfkja;ld kfja;sldk fjasldkjfa; sldkjfd"}
               rate={rates}
             />
             <Student
