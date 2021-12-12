@@ -38,10 +38,11 @@
     border-radius: 0;
     padding: 0.7rem 2rem;
 }
-.main-filter-section {
+.main-filter-section,
+.main-jobs-section {
     display: grid;
     grid-gap: 1rem;
-    padding: 0.7rem 2rem;
+    padding: 2rem 2rem;
 }
 .main-filter-section .form-check {
     padding: 0 2rem;
@@ -49,4 +50,7 @@
 .main-filter-section .form-label {
     font-weight: 800;
     color: #A6A6A6;
+}
+
+.main-section-jobs {
 }

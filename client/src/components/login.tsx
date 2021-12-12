@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { Form, Button} from "react-bootstrap";
 
 const Login = () => {
-  document.body.style.overflow = "hidden";
   return (
     <div id="login-bg">
       <div id="logo">

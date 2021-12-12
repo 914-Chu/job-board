@@ -1,6 +1,6 @@
 import React from "react";
 import "./main.css";
-import { Form, Row} from "react-bootstrap";
+import { Col, Form, Row} from "react-bootstrap";
 import {FaStar} from "react-icons/fa";
 
 const Main = () => {
@@ -15,6 +15,12 @@ const Main = () => {
         }
         return components;
     }
+    
+    const [ minPay, setMinPay ] = React.useState(15);
+    const [ maxPay, setMaxPay ] = React.useState(100);
+    
+    const [ minHours, setMinHours ] = React.useState(10);
+    const [ maxHours, setMaxHours ] = React.useState(40);
 
     return (
         <div id="main-bg">
@@ -90,16 +96,46 @@ const Main = () => {
                         <Form.Label>
                             Hourly Pay
                         </Form.Label>
-                        <Form.Check type="checkbox" label="Full time" />
-                        <Form.Check type="checkbox" label="Part time" />
+                        <Form.Group as={Row}>
+                            <Col xs="5">
+                                <Form.Control type="number" 
+                                    onChange={e => {setMinPay(Number(e.target.value))}} 
+                                    value={minPay} 
+                                    size='sm'/>
+                            </Col>
+                            <Col xs="2">
+                                -
+                            </Col>
+                            <Col xs="5">
+                                <Form.Control type="number" 
+                                    onChange={e => {setMaxPay(Number(e.target.value))}} 
+                                    value={maxPay} 
+                                    size='sm'/>
+                            </Col>
+                        </Form.Group>
                     </Form.Group>
 
                     <Form.Group as={Row} controlId="job-weekly-hours-range">
                         <Form.Label>
                             Weekly Hours
                         </Form.Label>
-                        <Form.Check type="checkbox" label="Full time" />
-                        <Form.Check type="checkbox" label="Part time" />
+                        <Form.Group as={Row}>
+                            <Col xs="5">
+                                <Form.Control type="number" 
+                                    onChange={e => {setMinHours(Number(e.target.value))}} 
+                                    value={minHours} 
+                                    size='sm'/>
+                            </Col>
+                            <Col xs="2">
+                                -
+                            </Col>
+                            <Col xs="5">
+                                <Form.Control type="number" 
+                                    onChange={e => {setMaxHours(Number(e.target.value))}} 
+                                    value={maxHours} 
+                                    size='sm'/>
+                            </Col>
+                        </Form.Group>
                     </Form.Group>
                 </section>
 
