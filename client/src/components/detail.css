@@ -25,7 +25,7 @@
 }
 
 #detail-card-left-bottom{
-    height: 60%;
+    height: 56%;
     top: 3.1%;
     border-color: transparent;
 }
@@ -76,7 +76,7 @@
 
 #detail-busroute{
     width:35%;
-    height:auto;
+    height:90%;
     padding-left: 0%;
 }
 
