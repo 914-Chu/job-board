@@ -46,8 +46,6 @@ const Rating = ({starsize}: Props) => {
                 );
             })}
         </div>
-
-
     );
 };
 
