@@ -40,14 +40,14 @@ const Detail = () => {
           </Card.Body>
         </Card>
         <Card id="detail-card-left-bottom">
-          <Card.Body>
+          <Card.Body id="left-bottom-body">
             <div className="detail-address">
-              <Card.Title className="property-title">Location:</Card.Title>
+              <Card.Title className="property-title">Location</Card.Title>
               <Card.Text className="property-text">
                 1234 Illini Lane, Urbana IL 61801
               </Card.Text>
             </div>
-            <Card.Body className="detail-busroute">
+            <Card.Body id="detail-busroute">
               <Card.Title>Nearby Bus Route</Card.Title>
               <Card.Text>blah blah</Card.Text>
             </Card.Body>
@@ -100,6 +100,38 @@ const Detail = () => {
               rate={rates}
             />
             <Student
+              id={"123456789"}
+              date={new Date()}
+              name={"name"}
+              headline={"headline"}
+              review={"review"}
+              rate={rates}
+            />
+            <Student
+              id={"123456789"}
+              date={new Date()}
+              name={"name"}
+              headline={"headline"}
+              review={"review"}
+              rate={rates}
+            />
+            <Student
+              id={"123456789"}
+              date={new Date()}
+              name={"name"}
+              headline={"headline"}
+              review={"review"}
+              rate={rates}
+            />
+                        <Student
+              id={"123456789"}
+              date={new Date()}
+              name={"name"}
+              headline={"headline"}
+              review={"review"}
+              rate={rates}
+            />
+                        <Student
               id={"123456789"}
               date={new Date()}
               name={"name"}

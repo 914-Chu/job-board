@@ -32,19 +32,6 @@ const Login = () => {
               </Button>
             </Link>
           </Form>
-          {/* <div className="formcont">
-            <form>
-              <p className="label">EMAIL:</p>
-              <input type="text" className="inputbox" />
-              <p className="label">PASSWORD:</p>
-              <input type="text" className="inputbox" />
-              <Link to="/main">
-                <button type="submit" className="loginbtn">
-                  Log In
-                </button>
-              </Link>
-            </form>
-          </div> */}
         </div>
     </div>
   );
