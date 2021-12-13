@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./main.css";
 import { Col, Form, Row} from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
@@ -17,12 +17,15 @@ const Main = () => {
         return components;
     }
 
-    const [ jobTypes, setJobTypes ] = React.useState({
+    const [ locationFilter, setLocation ] = useState('');
+    const [ searchFilter, setSearch ] = useState('');
+
+    const [ jobTypes, setJobTypes ] = useState({
         fullTime: true,
         partTime: true
     });
 
-    const [ averageRatings, setAverageRatings ] = React.useState({
+    const [ averageRatings, setAverageRatings ] = useState({
         one: true,
         two: true,
         three: true,
@@ -30,36 +33,24 @@ const Main = () => {
         five: true
     })
     
-    const [ minPay, setMinPay ] = React.useState(15);
-    const [ maxPay, setMaxPay ] = React.useState(100);
+    const [ minPay, setMinPay ] = useState(15);
+    const [ maxPay, setMaxPay ] = useState(100);
     
-    const [ minHours, setMinHours ] = React.useState(10);
-    const [ maxHours, setMaxHours ] = React.useState(40);
+    const [ minHours, setMinHours ] = useState(10);
+    const [ maxHours, setMaxHours ] = useState(40);
 
     const handleJobTypesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.id === 'fullTime') {
-            jobTypes.fullTime = !jobTypes.fullTime;
-        } else {
-            jobTypes.partTime = !jobTypes.partTime;
-        }
-
-        setJobTypes({...jobTypes});
+        setJobTypes({
+            ...jobTypes,
+            [e.target.id]: !e.target.value
+        });
     }
 
     const handleAvgRatingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.id === 'one') {
-            averageRatings.one = !averageRatings.one;
-        } else if (e.target.id === 'two') {
-            averageRatings.two = !averageRatings.two;
-        } else if (e.target.id === 'three') {
-            averageRatings.three = !averageRatings.three;
-        } else if (e.target.id === 'four') {
-            averageRatings.four = !averageRatings.four;
-        } else {
-            averageRatings.five = !averageRatings.five;
-        }
-
-        setAverageRatings({...averageRatings});
+        setAverageRatings({
+            ...averageRatings,
+            [e.target.id]: !e.target.value
+        });
     }
 
     return (
@@ -67,12 +58,16 @@ const Main = () => {
             <div className="main-search-container">
                 <Form>
                     <Form.Group className="md" controlId="main-search-location">
-                        <Form.Control type="search" placeholder="Location..." />
+                        <Form.Control type="search" placeholder="Location..."
+                            value={locationFilter}
+                            onChange={(e) => {setLocation(e.target.value)}} />
                     </Form.Group>
                 </Form>
                 <Form>
                     <Form.Group className="md" controlId="main-search-job">
-                        <Form.Control type="search" placeholder="Search..." />
+                        <Form.Control type="search" placeholder="Search..."
+                            value={searchFilter}
+                            onChange={(e) => {setSearch(e.target.value)}} />
                     </Form.Group>
                 </Form>
             </div>

@@ -10,7 +10,7 @@
 }
 
 .job-title.card-title {
-    padding: 0 1rem;
+    padding: 0.5rem 1rem 0;
     margin-bottom: 0 !important;
     overflow: hidden;
     height: 2rem;
@@ -18,10 +18,10 @@
     text-overflow: ellipsis;
 }
 
-.job-body {
+.job-body.card-body {
     display: grid;
     grid-gap: 1rem;
-    padding-top: 0px;
+    padding: 0 1rem;
 }
 .job-body > * {
     height: fit-content;
