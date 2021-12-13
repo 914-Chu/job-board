@@ -4,8 +4,8 @@ import { Card, Form, Button, Col, Row, InputGroup } from 'react-bootstrap';
 
 const PostJob = () => {
 
-    const [ form, setForm ] = useState({})
-    const [ errors, setErrors ] = useState({})
+    // const [ form, setForm ] = useState({})
+    // const [ errors, setErrors ] = useState({})
 
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
@@ -13,6 +13,8 @@ const PostJob = () => {
     const [ hourlyPay, setHourlyPay ] = useState(0.01);
     const [ jobType, setJobType ] = useState('');
     const [ weeklyHours, setWeeklyHours ] = useState(1);
+
+    console.log(jobType);
 
     return (
         <div id="postJob-bg">
