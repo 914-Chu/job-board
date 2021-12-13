@@ -2,6 +2,7 @@ import React from 'react';
 import './jobCard.css';
 import { Card, Button } from 'react-bootstrap';
 import {FaStar} from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 type JobProps = {
     title: string;
@@ -39,9 +40,11 @@ function JobCard({ title, description, rating, link }:JobProps){
                     </div>
                 </div>
                 <div>
-                    <Button className="job-apply">
-                        Apply
-                    </Button>
+                    <Link to={link}>
+                        <Button className="job-apply">
+                            Apply
+                        </Button>
+                    </Link>
                 </div>
             </Card.Body>
         </Card>
