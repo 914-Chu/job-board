@@ -5,7 +5,9 @@
     border-radius: 16px !important;
     box-shadow: 0 0 4px 1px rgb(0 0 0 / 5%), 1px 1px 1px 1px rgb(0 0 0 / 5%);
     padding: 10px;
-    
+
+    text-decoration: none;
+    color: black;
     font-size: 14px;
 }
 
