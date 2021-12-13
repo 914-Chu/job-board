@@ -1,3 +1,6 @@
+# Mongo secrets
+server/config/secrets.js
+
 # Logs
 logs
 *.log
