@@ -1,8 +1,8 @@
 // Load required packages
-var mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Define our task schema
-var JobSchema = new mongoose.Schema({
+const JobSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     location: { type: String, required: true },
@@ -13,4 +13,4 @@ var JobSchema = new mongoose.Schema({
 });
 
 // Export the Mongoose model
-module.exports = mongoose.model('job', JobSchema, 'jobs');
+export default mongoose.model('job', JobSchema, 'jobs');

@@ -1,8 +1,8 @@
-const Job = require('../models/job');
+import Job from '../models/job';
 
-module.exports = function (router) {
+export default function (router) {
 
-    var jobsRoute = router.route('/jobs');
+    const jobsRoute = router.route('/jobs');
 
     jobsRoute.get(async (req, res) => {
         Job.find().exec( function (err, jobs) {

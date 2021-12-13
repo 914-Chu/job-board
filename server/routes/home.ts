@@ -1,6 +1,6 @@
-module.exports = function (router, path) {
+export default function (router, path) {
 
-    var homeRoute = router.route('/');
+    const homeRoute = router.route('/');
 
     homeRoute.get(function (req, res) {
         res.sendFile(path.join(__dirname, "../..", "client", "build", "index.html"));

@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import mongoose from "mongoose";
-import secrets from "./config/secrets";
+import { mongo_connection } from "./config/secrets";
 import routes from "./routes";
 
 const router = express.Router();
@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect(secrets.mongo_connection);
+mongoose.connect(mongo_connection);
 
 // Allow CORS so that backend and frontend could be put on different servers
 const allowCrossDomain = function (req, res, next) {
