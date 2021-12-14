@@ -16,8 +16,6 @@ export default function (router) {
         });
     });
 
-    //TODO: add in PUT
-
     userRoute.delete( async (req, res) => {
         User.findByIdAndDelete(req.params.id, function (err, user) {
             if (!user) {
