@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import logo from "../assests/uiuc logo.png"
-import { Link } from "react-router-dom";
 import { Form, Button} from "react-bootstrap";
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { useNavigate } from "react-router-dom";
+import { app } from "../firebase-config";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  let navigate = useNavigate();
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const auth = getAuth(app);
+
+    console.log(email, password);
+    
+    signInWithEmailAndPassword(auth, email, password)
+    .then((response : any) => {
+      console.log(response);
+      navigate('/main')
+      sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+    })
+    .catch((error : any) => {
+      console.log(error)
+    })
+
+    
+  };
+
+
+
+
   return (
     <div id="login-bg">
       <div id="logo">
@@ -17,20 +46,22 @@ const Login = () => {
             <p id="welcome">WELCOME BACK</p>
             <p>Please enter your email and password</p>
           </div>
-          <Form className="login-form">
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form className="login-form" onSubmit={handleFormSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail" onChange={(e) => setEmail((e.target as HTMLInputElement).value)}>
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicPassowrd" onChange={(e) => setPassword((e.target as HTMLInputElement).value)}>
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <Link to="/main">
-              <Button type="submit" id="loginbtn">
-                Submit
-              </Button>
-            </Link>
+          
+            <Button type="submit" id="loginbtn">
+              Submit
+            </Button>
+
+            
+            
           </Form>
         </div>
     </div>

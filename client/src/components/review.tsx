@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./review.css";
 import Rating from "./rating";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, Form, Button, Col, Row } from "react-bootstrap";
 
 const Review = () => {
   document.body.style.overflow = "hidden";
+
+  let navigate = useNavigate();
+  useEffect(() => {
+      let authToken = sessionStorage.getItem('Auth Token')
+
+      if (authToken) {
+          navigate('/review')
+      }
+
+      if (!authToken) {
+          navigate('/login')
+      }
+  }, [])
 
   return (
     <div id="review-bg">

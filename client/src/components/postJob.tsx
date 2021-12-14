@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./postJob.css";
 import { Card, Form, Button, Col, Row, InputGroup } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 
 type formTypes = {
     title: string,
@@ -74,6 +75,25 @@ const PostJob = () => {
 
         return newErrors;
     }
+    let navigate = useNavigate();
+    useEffect(() => {
+        let authToken = sessionStorage.getItem('Auth Token')
+
+        if (authToken) {
+            navigate('/postJob')
+        }
+
+        if (!authToken) {
+            navigate('/login')
+        }
+    }, [])
+
+    const [ title, setTitle ] = useState('');
+    const [ description, setDescription ] = useState('');
+    const [ location, setLocation ] = useState('');
+    const [ hourlyPay, setHourlyPay ] = useState(0.01);
+    const [ jobType, setJobType ] = useState('');
+    const [ weeklyHours, setWeeklyHours ] = useState(1);
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
