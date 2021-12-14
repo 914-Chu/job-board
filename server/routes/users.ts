@@ -5,6 +5,18 @@ export default function (router) {
 
     const usersRoute = router.route('/users');
 
+    usersRoute.get(async (req, res) => {
+        User.find().exec( function (err, users) {
+            if (err) {
+                res.status(500);
+                res.json({message: "Unable to find users", data: "" });
+            } else {
+                res.status(200);
+                res.json({ message: 'OK', data: users });
+            }
+        });
+    });
+
     usersRoute.post( async (req, res) => {
         
         if (req.body.name && req.body.email) {
