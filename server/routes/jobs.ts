@@ -39,10 +39,7 @@ export default function (router) {
                     location:req.body.location,
                     hourlyPay:req.body.hourlyPay,
                     employmentType:req.body.employmentType,
-                    weeklyHours:req.body.weeklyHours,
-                    tags:req.body.tags,
-                    relatedMajors:req.body.relatedMajors,
-                    postAuthor:"Get author info to populate this"
+                    weeklyHours:req.body.weeklyHours
                 }, function (err, job) {
                 if (err) {
                     res.status(500);
