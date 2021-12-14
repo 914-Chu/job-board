@@ -22,9 +22,7 @@ export default function (router) {
         if (req.body.name && req.body.email) {
             User.create({
                     name:req.body.name,
-                    email:req.body.email,
-                    profilePic:req.body.profilePic,
-                    savedJobs:req.body.savedJobs
+                    email:req.body.email
                 }, function (err, user) {
                     if (err) {
                         if ((err as MongoError).code && (err as MongoError).code === 11000) {
