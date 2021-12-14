@@ -8,10 +8,11 @@ type JobProps = {
     title: string;
     description: string;
     rating: number;
-    link: string;
+    detailsLink: string;
+    externalLink: string;
 }
 
-function JobCard({ title, description, rating, link }:JobProps){
+function JobCard({ title, description, rating, detailsLink, externalLink }:JobProps){
 
     const getNStars = (n: number) => {
         var components = [];
@@ -26,7 +27,7 @@ function JobCard({ title, description, rating, link }:JobProps){
     }
 
     return (
-        <Card className="job-card-container">
+        <Card as={Link} className="job-card-container" to={detailsLink}>
             <Card.Title className="job-title">
                 {title}
             </Card.Title>
@@ -40,7 +41,7 @@ function JobCard({ title, description, rating, link }:JobProps){
                     </div>
                 </div>
                 <div>
-                    <Link to={link}>
+                    <Link to={externalLink}>
                         <Button className="job-apply">
                             Apply
                         </Button>
