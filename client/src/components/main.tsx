@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./main.css";
 import { Col, Form, Row} from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 import JobCard from "./JobCard/jobCard";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
+    let navigate = useNavigate();
+    useEffect(() => {
+        let authToken = sessionStorage.getItem('Auth Token')
+
+        if (authToken) {
+            navigate('/main')
+        }
+
+        if (!authToken) {
+            navigate('/login')
+        }
+    }, [])
+
     const getNStars = (n: number) => {
         var components = [];
         for (let i = 0; i < 5; i++) {

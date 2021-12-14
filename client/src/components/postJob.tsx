@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./postJob.css";
 import { Card, Form, Button, Col, Row, InputGroup } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 
 const PostJob = () => {
 
     // const [ form, setForm ] = useState({})
     // const [ errors, setErrors ] = useState({})
+
+    let navigate = useNavigate();
+    useEffect(() => {
+        let authToken = sessionStorage.getItem('Auth Token')
+
+        if (authToken) {
+            navigate('/postJob')
+        }
+
+        if (!authToken) {
+            navigate('/login')
+        }
+    }, [])
 
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
