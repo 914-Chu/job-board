@@ -3,6 +3,9 @@ import "./postJob.css";
 import { Card, Form, Button, Col, Row, InputGroup } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
+import axios from "axios";
+import successImg from "../assests/success.png";
+import failImg from "../assests/fail.png";
 
 type formTypes = {
     title: string,
@@ -26,6 +29,15 @@ type errorTypes = {
 }
 
 const PostJob = () => {
+
+    // const [
+    //     formSubmitStatus,
+    //     setFormSubmitStatus 
+    // ] = React.useState('Not Submitted');
+    const [
+        formSubmitStatus,
+        setFormSubmitStatus 
+    ] = React.useState('Not Submitted');
 
     const [ form, setForm ] = useState<formTypes>({
         title: '',
@@ -82,6 +94,7 @@ const PostJob = () => {
 
         return newErrors;
     }
+
     let navigate = useNavigate();
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
@@ -102,8 +115,49 @@ const PostJob = () => {
             setErrors(newErrors);
             console.log(errors);
         } else {
-            alert('Job Posted!');
+            console.log(form);
+            axios.post('api/jobs', form)
+            .then(function (response) {
+                console.log(response);
+                setFormSubmitStatus('Created');
+            })
+            .catch(function (error) {
+                console.log(error);
+                setFormSubmitStatus('Error');
+            });
         }
+    }
+
+    if (formSubmitStatus === 'Created') {
+        return (
+            <div id="postJob-bg">
+                <Card className="postJob-card-container">
+                    <Card.Body className="postJob-card-message">
+                        <img src={successImg}
+                            height="400px"
+                            width="400px" />
+                        <h4 className="success">
+                            Job Successfully Posted!
+                        </h4>
+                    </Card.Body>
+                </Card>
+            </div>
+        )
+    } else if (formSubmitStatus === 'Error') {
+        return (
+            <div id="postJob-bg">
+                <Card className="postJob-card-container">
+                    <Card.Body className="postJob-card-message">
+                        <img src={failImg}
+                            height="400px"
+                            width="400px" />
+                        <h4 className="fail">
+                            Job Creation Failed. Please try again!
+                        </h4>
+                    </Card.Body>
+                </Card>
+            </div>
+        )
     }
 
     return (
