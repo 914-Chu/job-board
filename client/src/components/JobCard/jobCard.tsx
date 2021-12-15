@@ -2,7 +2,7 @@ import React from 'react';
 import './jobCard.css';
 import { Card, Button } from 'react-bootstrap';
 import {FaStar} from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type JobProps = {
     title: string;
@@ -29,7 +29,7 @@ function JobCard({ title, location, description, rating, detailsLink, externalLi
     }
 
     return (
-        <Card onClick={() => navigate(detailsLink)} className="job-card-container">
+        <Card as={Link} className="job-card-container" to={detailsLink}>
             <Card.Title className="job-title">
                 {title}
             </Card.Title>
