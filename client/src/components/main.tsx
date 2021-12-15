@@ -101,12 +101,12 @@ const Main = () => {
 
     const locationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocation(e.target.value);
-        filter(searchFilter, e.target.value, jobTypes, averageRatings);
+        filter(searchFilter, e.target.value, jobTypes, averageRatings, minPay, minHours, maxHours);
     }
 
     const searchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
-        filter(e.target.value, locationFilter, jobTypes, averageRatings);
+        filter(e.target.value, locationFilter, jobTypes, averageRatings, minPay, minHours, maxHours);
     }
 
     const handleJobTypesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,7 +115,7 @@ const Main = () => {
             [e.target.id]: e.target.checked
         };
         setJobTypes(newObj);
-        filter(searchFilter, locationFilter, newObj, averageRatings);
+        filter(searchFilter, locationFilter, newObj, averageRatings, minPay, minHours, maxHours);
     }
 
     const handleAvgRatingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -124,14 +124,43 @@ const Main = () => {
             [e.target.id]: e.target.checked
         };
         setAverageRatings(newObj);
-        filter(searchFilter, locationFilter, jobTypes, newObj);
+        filter(searchFilter, locationFilter, jobTypes, newObj, minPay, minHours, maxHours);
+    }
+
+    const handleMinPayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setMinPay(Number(e.target.value));
+        filter(searchFilter, locationFilter, jobTypes, averageRatings, Number(e.target.value), minHours, maxHours);
+    }
+
+    const handleMinHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let newMin = Number(e.target.value);
+        if (isNaN(maxHours) && newMin >= maxHours) {
+            newMin = maxHours - 1;
+        }
+        if (newMin < 1) {
+            newMin = 1;
+        }
+        setMinHours(newMin);
+        filter(searchFilter, locationFilter, jobTypes, averageRatings, minPay, newMin, maxHours);
+    }
+
+    const handleMaxHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let newMax = Number(e.target.value);
+        if (isNaN(minHours) && newMax <= minHours) {
+            newMax = minHours + 1;
+        }
+        setMaxHours(newMax);
+        filter(searchFilter, locationFilter, jobTypes, averageRatings, minPay, minHours, newMax);
     }
 
     const filter = (
             keyword: string,
             loc: string,
             jobTypesFilter: any,
-            ratingsFilter: any) => {
+            ratingsFilter: any,
+            minPayFilter: number,
+            minHoursFilter: number,
+            maxHoursFilter: number) => {
         let results = [];
         if (keyword !== '') {
             results = allJobs.filter((job) => {
@@ -162,7 +191,6 @@ const Main = () => {
         }
 
         if (!Object.values(ratingsFilter).every(o => o === false)) {
-            console.log()
             let toBeIncluded: number[] = [];
             if (ratingsFilter.one === true) {
                 toBeIncluded.push(1);
@@ -182,6 +210,24 @@ const Main = () => {
             console.log(toBeIncluded)
             results = results.filter((job) => {
                 return toBeIncluded.includes(job.ratingTotals[0]);
+            })
+        }
+
+        if (isNaN(minPayFilter) && minPayFilter > 0) {
+            results = results.filter((job) => {
+                return job.hourlyPay >= minPayFilter;
+            })
+        }
+
+        if (isNaN(minHoursFilter) && minHoursFilter > 0) {
+            results = results.filter((job) => {
+                return job.weeklyHours >= minHoursFilter;
+            })
+        }
+
+        if (isNaN(maxHoursFilter) && maxHoursFilter > 0) {
+            results = results.filter((job) => {
+                return job.weeklyHours <= maxHoursFilter;
             })
         }
 
@@ -294,7 +340,7 @@ const Main = () => {
                                 <InputGroup>
                                     <InputGroup.Text>$</InputGroup.Text>
                                     <Form.Control type="number" 
-                                        onChange={e => {setMinPay(Number(e.target.value))}} 
+                                        onChange={handleMinPayChange} 
                                         value={minPay}  
                                         step={0.50}
                                         min={0.00}
@@ -311,7 +357,7 @@ const Main = () => {
                         <Form.Group as={Row}>
                             <Col xs="5">
                                 <Form.Control type="number" 
-                                    onChange={e => {setMinHours(Number(e.target.value))}} 
+                                    onChange={handleMinHoursChange} 
                                     value={minHours} 
                                     min={1}
                                     size='sm'/>
@@ -321,7 +367,7 @@ const Main = () => {
                             </Col>
                             <Col xs="5">
                                 <Form.Control type="number" 
-                                    onChange={e => {setMaxHours(Number(e.target.value))}} 
+                                    onChange={handleMaxHoursChange} 
                                     value={maxHours} 
                                     min={1}
                                     size='sm'/>
@@ -336,7 +382,8 @@ const Main = () => {
                         :   <div className="empty-results">
                                 <h2>Nothing found!</h2>
                                 <img src={emptyResImg} 
-                                    height="300px" />
+                                    height="300px"
+                                    alt="empty-results-img" />
                             </div>
                     }
                 </section>

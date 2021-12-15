@@ -63,3 +63,7 @@
 
     text-transform: uppercase;
 }
+
+.job-externlink {
+    z-index: 10;
+}
