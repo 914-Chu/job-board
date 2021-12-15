@@ -22,6 +22,7 @@ const Login = () => {
     .then((response : any) => {
       navigate('/main')
       sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+      sessionStorage.setItem('email', email)
     })
     .catch((error : any) => {
       console.log(error)

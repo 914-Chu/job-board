@@ -12,6 +12,7 @@ const Main = () => {
 
         if (authToken) {
             navigate('/main')
+            console.log(sessionStorage.getItem('email'))
         }
 
         if (!authToken) {
