@@ -57,7 +57,11 @@ const NavBar = () => {
                 
                 <Nav.Link as={Link} className="navbar-link" to="/login">
                     <Button className="align-middle" onClick={handleLogOut}>
-                        Log Out
+                        { sessionStorage.getItem('Auth Token')
+                            ? "Logout"
+                            : "Login"
+                        }
+
                     </Button>
                 </Nav.Link>
                     
