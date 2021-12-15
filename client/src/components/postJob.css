@@ -9,21 +9,41 @@
 
 .postJob-card-container {
     min-width: 700px;
+    min-height: 561px;
     height: fit-content;
     border-radius: 16px;
-    margin: 70px 20%;
+    margin: 50px 20%;
     
     font-size: 14px;
 }
 
 .postJob-title {
-    padding: 20px 20px 10px;
+    padding: 10px 20px 10px;
     text-align: center;
     color: #1C4B82;
     font-weight: 900;
     text-transform: uppercase;
 
     border-bottom: 4px solid #1C4B82;
+}
+
+.postJob-card-message {
+    display: grid;
+    grid-gap: 15px;
+    align-items: center;
+    justify-items: center;
+}
+.postJob-card-message > * {
+    justify-content: center;
+    text-align: center;
+}
+.postJob-card-message .success {
+    color: #64bc43;
+    font-weight: 800;
+}
+.postJob-card-message .fail {
+    color: red;
+    font-weight: 800;
 }
 
 #postJob-form {

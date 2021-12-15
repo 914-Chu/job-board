@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./postJob.css";
 import { Card, Form, Button, Col, Row, InputGroup } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
+import axios from "axios";
+import successImg from "../assests/success.png";
+import failImg from "../assests/fail.png";
 
 type formTypes = {
     title: string,
     description: string,
+    externalLink: string,
     location: string,
     hourlyPay: number,
     employmentType: string,
@@ -16,6 +21,7 @@ type errorTypes = {
     [key: string]: string,
     title: string,
     description: string,
+    externalLink: string,
     location: string,
     hourlyPay: string,
     employmentType: string,
@@ -24,9 +30,19 @@ type errorTypes = {
 
 const PostJob = () => {
 
+    // const [
+    //     formSubmitStatus,
+    //     setFormSubmitStatus 
+    // ] = React.useState('Not Submitted');
+    const [
+        formSubmitStatus,
+        setFormSubmitStatus 
+    ] = React.useState('Not Submitted');
+
     const [ form, setForm ] = useState<formTypes>({
         title: '',
         description: '',
+        externalLink: '',
         location: '',
         hourlyPay: NaN,
         employmentType: '',
@@ -35,6 +51,7 @@ const PostJob = () => {
     const [ errors, setErrors ] = useState<errorTypes>({
         title: '',
         description: '',
+        externalLink: '',
         location: '',
         hourlyPay: '',
         employmentType: '',
@@ -54,12 +71,13 @@ const PostJob = () => {
     }
 
     const findFormErrors = () => {
-        const { title, description, location, 
+        const { title, description, externalLink, location, 
             hourlyPay, employmentType, weeklyHours }
             = form;
         const newErrors : errorTypes = {
             title: '',
             description: '',
+            externalLink: '',
             location: '',
             hourlyPay: '',
             employmentType: '',
@@ -68,6 +86,7 @@ const PostJob = () => {
 
         if ( !title || title === '' ) newErrors.title = 'cannot be blank!';
         if ( !description || description === '' ) newErrors.description = 'cannot be blank!';
+        if ( !externalLink || externalLink === '' || !validator.isURL(externalLink) ) newErrors.externalLink = 'must provide a valid URL!';
         if ( !location || location === '' ) newErrors.location = 'cannot be blank!';
         if ( !hourlyPay || hourlyPay < 0.01 ) newErrors.hourlyPay = 'must assign an hourly pay of at least $0.01!';
         if ( !employmentType || employmentType === 'Not Selected' ) newErrors.employmentType = 'select an employment type!';
@@ -75,6 +94,7 @@ const PostJob = () => {
 
         return newErrors;
     }
+
     let navigate = useNavigate();
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
@@ -95,8 +115,49 @@ const PostJob = () => {
             setErrors(newErrors);
             console.log(errors);
         } else {
-            alert('Job Posted!');
+            console.log(form);
+            axios.post('api/jobs', form)
+            .then(function (response) {
+                console.log(response);
+                setFormSubmitStatus('Created');
+            })
+            .catch(function (error) {
+                console.log(error);
+                setFormSubmitStatus('Error');
+            });
         }
+    }
+
+    if (formSubmitStatus === 'Created') {
+        return (
+            <div id="postJob-bg">
+                <Card className="postJob-card-container">
+                    <Card.Body className="postJob-card-message">
+                        <img src={successImg}
+                            height="400px"
+                            width="400px" />
+                        <h4 className="success">
+                            Job Successfully Posted!
+                        </h4>
+                    </Card.Body>
+                </Card>
+            </div>
+        )
+    } else if (formSubmitStatus === 'Error') {
+        return (
+            <div id="postJob-bg">
+                <Card className="postJob-card-container">
+                    <Card.Body className="postJob-card-message">
+                        <img src={failImg}
+                            height="400px"
+                            width="400px" />
+                        <h4 className="fail">
+                            Job Creation Failed. Please try again!
+                        </h4>
+                    </Card.Body>
+                </Card>
+            </div>
+        )
     }
 
     return (
@@ -132,6 +193,19 @@ const PostJob = () => {
                                     isInvalid={ !!errors.description } />
                                 <Form.Control.Feedback type='invalid'>
                                     { errors.description }
+                                </Form.Control.Feedback>
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} className="mb-3" controlId="job-url">
+                            <Form.Label column sm="3">
+                                External Link*
+                            </Form.Label>
+                            <Col sm="9">
+                                <Form.Control type="url" size="sm" placeholder="External Link" required
+                                    onChange={(e) => {setField('externalLink', e.target.value)}}
+                                    isInvalid={ !!errors.externalLink } />
+                                <Form.Control.Feedback type='invalid'>
+                                    { errors.externalLink }
                                 </Form.Control.Feedback>
                             </Col>
                         </Form.Group>
