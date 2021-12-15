@@ -6,6 +6,8 @@ import JobCard from "./JobCard/jobCard";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import emptyResImg from "../assests/nothing-found.png";
+
 export interface Jobs {
     message: string;
     data:    Datum[];
@@ -27,7 +29,6 @@ export interface Datum {
 }
 
 export enum EmploymentType {
-    EmploymentTypeFullTime = "full-time",
     FullTime = "Full time",
     PartTime = "Part time",
 }
@@ -66,36 +67,22 @@ const Main = () => {
     const [ searchFilter, setSearch ] = useState('');
 
     const [ jobTypes, setJobTypes ] = useState({
-        fullTime: true,
-        partTime: true
+        fullTime: false,
+        partTime: false
     });
 
     const [ averageRatings, setAverageRatings ] = useState({
-        one: true,
-        two: true,
-        three: true,
-        four: true,
-        five: true
+        one: false,
+        two: false,
+        three: false,
+        four: false,
+        five: false
     })
     
-    const [ minPay, setMinPay ] = useState(15);
+    const [ minPay, setMinPay ] = useState(NaN);
     
-    const [ minHours, setMinHours ] = useState(10);
-    const [ maxHours, setMaxHours ] = useState(40);
-
-    const handleJobTypesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setJobTypes({
-            ...jobTypes,
-            [e.target.id]: e.target.checked
-        });
-    }
-
-    const handleAvgRatingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setAverageRatings({
-            ...averageRatings,
-            [e.target.id]: e.target.checked
-        });
-    }
+    const [ minHours, setMinHours ] = useState(NaN);
+    const [ maxHours, setMaxHours ] = useState(NaN);
 
     const fetchData = async () => {
         axios.get('api/jobs')
@@ -114,15 +101,37 @@ const Main = () => {
 
     const locationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocation(e.target.value);
-        filter(searchFilter , e.target.value);
+        filter(searchFilter, e.target.value, jobTypes, averageRatings);
     }
 
     const searchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
-        filter(e.target.value, locationFilter);
+        filter(e.target.value, locationFilter, jobTypes, averageRatings);
     }
 
-    const filter = (keyword: string, loc: string) => {
+    const handleJobTypesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newObj = {
+            ...jobTypes,
+            [e.target.id]: e.target.checked
+        };
+        setJobTypes(newObj);
+        filter(searchFilter, locationFilter, newObj, averageRatings);
+    }
+
+    const handleAvgRatingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newObj = {
+            ...averageRatings,
+            [e.target.id]: e.target.checked
+        };
+        setAverageRatings(newObj);
+        filter(searchFilter, locationFilter, jobTypes, newObj);
+    }
+
+    const filter = (
+            keyword: string,
+            loc: string,
+            jobTypesFilter: any,
+            ratingsFilter: any) => {
         let results = [];
         if (keyword !== '') {
             results = allJobs.filter((job) => {
@@ -138,6 +147,46 @@ const Main = () => {
             });
         }
 
+        if (!Object.values(jobTypesFilter).every(o => o === false)) {
+            let toBeIncluded: string | EmploymentType[] = [];
+            if (jobTypesFilter.fullTime === true) {
+                toBeIncluded.push(EmploymentType.FullTime);
+            }
+            if (jobTypesFilter.partTime === true) {
+                toBeIncluded.push(EmploymentType.PartTime);
+            }
+            
+            results = results.filter((job) => {
+                return toBeIncluded.includes(job.employmentType);
+            })
+        }
+
+        if (!Object.values(ratingsFilter).every(o => o === false)) {
+            console.log()
+            let toBeIncluded: number[] = [];
+            if (ratingsFilter.one === true) {
+                toBeIncluded.push(1);
+            }
+            if (ratingsFilter.two === true) {
+                toBeIncluded.push(2);
+            }
+            if (ratingsFilter.three === true) {
+                toBeIncluded.push(3);
+            }
+            if (ratingsFilter.four === true) {
+                toBeIncluded.push(4);
+            }
+            if (ratingsFilter.five === true) {
+                toBeIncluded.push(5);
+            }
+            console.log(toBeIncluded)
+            results = results.filter((job) => {
+                return toBeIncluded.includes(job.ratingTotals[0]);
+            })
+        }
+
+        console.log(results);
+
         setFilteredJobs(results);
     }
 
@@ -149,7 +198,6 @@ const Main = () => {
             detailsLink="/detail"
             externalLink={job.externalLink} />
     ));
-
 
     return (
         <div id="main-bg">
@@ -283,7 +331,14 @@ const Main = () => {
                 </section>
 
                 <section className="main-jobs-section">
-                    { getAllJobCards }
+                    { getAllJobCards.length > 0
+                        ?   getAllJobCards 
+                        :   <div className="empty-results">
+                                <h2>Nothing found!</h2>
+                                <img src={emptyResImg} 
+                                    height="300px" />
+                            </div>
+                    }
                 </section>
             </div>
         </div>

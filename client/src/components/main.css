@@ -60,6 +60,14 @@
     overflow: auto;
 }
 
+.empty-results {
+    grid-column: span 3;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    color: #1C4B82;
+}
+
 .extra {
     height: 100px;
 }
