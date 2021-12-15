@@ -60,6 +60,7 @@ const Main = () => {
     }
 
     const [ allJobs, setAllJobs ] = useState<Datum[]>([]);
+    const [ filteredJobs, setFilteredJobs ] = useState<Datum[]>([]);
 
     const [ locationFilter, setLocation ] = useState('');
     const [ searchFilter, setSearch ] = useState('');
@@ -104,14 +105,45 @@ const Main = () => {
             //     console.log(jobsRes[i])
             // }
             setAllJobs(jobsRes);
+            setFilteredJobs(jobsRes);
         })
         .catch(function (error) {
 
         });
     }
 
-    const getAllJobCards = allJobs.map((job) => (
+    const locationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLocation(e.target.value);
+        filter(searchFilter , e.target.value);
+    }
+
+    const searchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value);
+        filter(e.target.value, locationFilter);
+    }
+
+    const filter = (keyword: string, loc: string) => {
+        let results = [];
+        if (keyword !== '') {
+            results = allJobs.filter((job) => {
+                return job.title.toLowerCase().includes(keyword.toLowerCase());
+            });
+        } else {
+            results = [...allJobs];
+        }
+
+        if (loc !== '') {
+            results = results.filter((job) => {
+                return job.location.toLowerCase().includes(loc.toLowerCase());
+            });
+        }
+
+        setFilteredJobs(results);
+    }
+
+    const getAllJobCards = filteredJobs.map((job) => (
         <JobCard title={job.title}
+            location={job.location}
             description={job.description}
             rating={job.ratingTotals[0]}
             detailsLink="/detail"
@@ -125,15 +157,13 @@ const Main = () => {
                 <Form>
                     <Form.Group className="md" controlId="main-search-location">
                         <Form.Control type="search" placeholder="Location..."
-                            value={locationFilter}
-                            onChange={(e) => {setLocation(e.target.value)}} />
+                            onChange={locationChange} />
                     </Form.Group>
                 </Form>
                 <Form>
                     <Form.Group className="md" controlId="main-search-job">
                         <Form.Control type="search" placeholder="Search..."
-                            value={searchFilter}
-                            onChange={(e) => {setSearch(e.target.value)}} />
+                            onChange={searchChange} />
                     </Form.Group>
                 </Form>
             </div>
