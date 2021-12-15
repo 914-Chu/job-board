@@ -241,7 +241,7 @@ const Main = () => {
             location={job.location}
             description={job.description}
             rating={job.ratingTotals[0]}
-            detailsLink="/detail"
+            detailsLink={`/detail/${job._id}`}
             externalLink={job.externalLink} />
     ));
 

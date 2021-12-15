@@ -14,7 +14,7 @@ type JobProps = {
 }
 
 function JobCard({ title, location, description, rating, detailsLink, externalLink }:JobProps){
-
+    
     const getNStars = (n: number) => {
         var components = [];
         for (let i = 0; i < 5; i++) {
