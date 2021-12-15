@@ -19,7 +19,7 @@ const Detail = () => {
       if (!authToken) {
           navigate('/login')
       }
-  }, [])
+  }, [navigate])
 
   return (
     <div id="detail-bg">

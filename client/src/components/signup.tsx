@@ -3,16 +3,45 @@ import "./signup.css";
 import logo from "../assests/uiuc logo.png"
 import { Form, Button} from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app } from "../firebase-config";
+import axios from "axios";
+
+type userType = {
+    name : string,
+    email : string
+}
 
 const SignUp = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    let navigate = useNavigate();
+
     const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(name, email, password);
-        /* Store name, email, and password to backend */
+        const auth = getAuth(app);
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((response : any) => {
+            navigate('/main')
+            sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+            sessionStorage.setItem('email', email)
+
+            const user : userType = {name, email}
+
+            axios.post('/api/users', user)
+            .then((response : any) => {
+                console.log(response)
+            })
+            .catch((error : any) => {
+                console.log(error)
+            })          
+
+        })
+        .catch((error : any) => {
+            console.log(error)
+        });
     };
 
 

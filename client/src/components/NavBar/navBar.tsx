@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import findJob from "../../assests/icons8-job-seeker-50.png";
 import newJob from "../../assests/icons8-new-job-50.png";
@@ -7,17 +7,13 @@ import mainLogo from "../../assests/ilogo.png";
 import "./navBar.css";
 
 const NavBar = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    useEffect(() => {
-        if (isLoggedIn) {
-            console.log("do the login logic");
-        }
-    }, [])
+    let navigate = useNavigate();
 
     const handleLogOut = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        console.log("handle logout");
+        sessionStorage.removeItem('Auth Token');
+        navigate('/login')
     }
 
     return (
@@ -58,18 +54,14 @@ const NavBar = () => {
                     />
                     <div className="align-middle">Post A Job</div>
                 </Nav.Link>
-                { isLoggedIn ?
-                        <Nav.Link as={Link} className="navbar-link" to="/login">
-                            <Button className="align-middle" onClick={handleLogOut}>
-                                Log Out
-                            </Button>
-                        </Nav.Link>
-                    :   <Nav.Link as={Link} className="navbar-link" to="/login">
-                            <Button className="align-middle">
-                                Log In
-                            </Button>
-                        </Nav.Link>
-                }
+                
+                <Nav.Link as={Link} className="navbar-link" to="/login">
+                    <Button className="align-middle" onClick={handleLogOut}>
+                        Log Out
+                    </Button>
+                </Nav.Link>
+                    
+                
                 </Nav>
             </Container>
         </Navbar>

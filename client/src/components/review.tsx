@@ -18,7 +18,7 @@ const Review = () => {
       if (!authToken) {
           navigate('/login')
       }
-  }, [])
+  }, [navigate])
 
   return (
     <div id="review-bg">

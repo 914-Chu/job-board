@@ -20,9 +20,9 @@ const Login = () => {
     
     signInWithEmailAndPassword(auth, email, password)
     .then((response : any) => {
-      console.log(response);
       navigate('/main')
       sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+      sessionStorage.setItem('email', email)
     })
     .catch((error : any) => {
       console.log(error)
