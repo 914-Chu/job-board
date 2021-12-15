@@ -105,11 +105,11 @@ const Detail = () => {
                               <Card.Title className="property-title">Hourly Pay</Card.Title>
                               <Card.Text className="property-text">{job.hourlyPay}</Card.Text>
                           </div>
-                          <Link to={job.externalLink}>
+                          <a href={job.externalLink} target="_blank" rel="noreferrer">
                               <Button type="submit" id="applybtn">
                                   Apply
                               </Button>
-                          </Link>
+                          </a>
                       </Card.Body>
                   </Card>
                   <Card id="detail-card-left-bottom">
