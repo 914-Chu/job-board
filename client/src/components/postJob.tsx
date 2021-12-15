@@ -143,7 +143,8 @@ const PostJob = () => {
                     <Card.Body className="postJob-card-message">
                         <img src={successImg}
                             height="300px"
-                            width="300px" />
+                            width="300px" 
+                            alt="Success"/>
                         <h4 className="success">
                             Job Successfully Posted!
                         </h4>
@@ -162,7 +163,8 @@ const PostJob = () => {
                     <Card.Body className="postJob-card-message">
                         <img src={failImg}
                             height="300px"
-                            width="300px" />
+                            width="300px"
+                            alt="Failure" />
                         <h4 className="fail">
                             Job Creation Failed. Please try again!
                         </h4>
