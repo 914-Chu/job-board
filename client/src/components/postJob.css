@@ -11,13 +11,13 @@
     min-width: 700px;
     height: fit-content;
     border-radius: 16px;
-    margin: 70px 20%;
+    margin: 50px 20%;
     
     font-size: 14px;
 }
 
 .postJob-title {
-    padding: 20px 20px 10px;
+    padding: 10px 20px 10px;
     text-align: center;
     color: #1C4B82;
     font-weight: 900;
