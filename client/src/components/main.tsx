@@ -78,7 +78,6 @@ const Main = () => {
     })
     
     const [ minPay, setMinPay ] = useState(15);
-    const [ maxPay, setMaxPay ] = useState(100);
     
     const [ minHours, setMinHours ] = useState(10);
     const [ maxHours, setMaxHours ] = useState(40);
@@ -86,14 +85,14 @@ const Main = () => {
     const handleJobTypesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setJobTypes({
             ...jobTypes,
-            [e.target.id]: !e.target.value
+            [e.target.id]: e.target.checked
         });
     }
 
     const handleAvgRatingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAverageRatings({
             ...averageRatings,
-            [e.target.id]: !e.target.value
+            [e.target.id]: e.target.checked
         });
     }
 
