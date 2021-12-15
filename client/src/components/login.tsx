@@ -5,6 +5,8 @@ import { Form, Button} from "react-bootstrap";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { Link, useNavigate } from "react-router-dom";
 import { app } from "../firebase-config";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,6 +28,15 @@ const Login = () => {
     })
     .catch((error : any) => {
       console.log(error)
+      if (error.code === 'auth/wrong-password') {
+        toast.error('Please check the Password');
+      }
+      else if (error.code === 'auth/user-not-found') {
+        toast.error('Please check the Email');
+      }
+      else {
+        toast.error('Something went wrong');
+      }
     })
 
     
@@ -40,6 +51,7 @@ const Login = () => {
         <img src={logo} className="fit2" alt="" />
         <p className="imgtxt">ON-CAMPUS JOB BOARD</p>
       </div>
+      <ToastContainer />
       <div className="containleft"></div>
         <div className="leftCard">
           <div className="welcome">
