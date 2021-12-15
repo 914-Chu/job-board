@@ -23,7 +23,6 @@ render(
                 <Route path="/login" element={<Login />}/>
                 <Route path="/signup" element={<SignUp />}/>
                 <Route path="/main" element={<Main />}/>
-                <Route path="/detail" element={<Detail />}/>
                 <Route path="/detail/:jobId" element={<Detail />}/>
                 <Route path="/review" element={<Review />}/>
                 <Route path="/review/:jobId" element={<Review />}/>

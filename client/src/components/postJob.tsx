@@ -120,10 +120,10 @@ const PostJob = () => {
             .then(function (response) {
                 console.log(response);
                 setFormSubmitStatus('Created');
-                let jobId = response.data._id;
+                let jobId = response.data.data._id;
                 console.log(jobId);
                 setTimeout(() => {
-                    navigate('/main');
+                    navigate(`/detail/${jobId}`);
                 }, 3000);
             })
             .catch(function (error) {

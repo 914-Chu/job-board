@@ -213,19 +213,19 @@ const Main = () => {
             })
         }
 
-        if (isNaN(minPayFilter) && minPayFilter > 0) {
+        if (!isNaN(minPayFilter) && minPayFilter > 0) {
             results = results.filter((job) => {
                 return job.hourlyPay >= minPayFilter;
             })
         }
 
-        if (isNaN(minHoursFilter) && minHoursFilter > 0) {
+        if (!isNaN(minHoursFilter) && minHoursFilter > 0) {
             results = results.filter((job) => {
                 return job.weeklyHours >= minHoursFilter;
             })
         }
 
-        if (isNaN(maxHoursFilter) && maxHoursFilter > 0) {
+        if (!isNaN(maxHoursFilter) && maxHoursFilter > 0) {
             results = results.filter((job) => {
                 return job.weeklyHours <= maxHoursFilter;
             })
