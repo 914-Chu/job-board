@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../firebase-config";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type userType = {
     name : string,
@@ -36,11 +38,21 @@ const SignUp = () => {
             })
             .catch((error : any) => {
                 console.log(error)
+                toast.error(error.message);
             })          
 
         })
         .catch((error : any) => {
             console.log(error)
+            if (error.code === 'auth/email-already-in-use') {
+                toast.error('Email Already in Use');
+            }
+            else if (error.code === 'auth/weak-password') {
+                toast.error('Password is too weak');
+            }
+            else {
+                toast.error(error.message);
+            }
         });
     };
 
@@ -53,6 +65,7 @@ const SignUp = () => {
                 <img src={logo} className="fit2" alt="" />
                 <p className="imgtxt">ON-CAMPUS JOB BOARD</p>
             </div>
+            <ToastContainer />
             <div className="containleft"></div>
             <div className="leftCard">
                 <div className="welcome">

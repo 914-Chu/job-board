@@ -55,13 +55,13 @@ const NavBar = () => {
                     <div className="align-middle">Post A Job</div>
                 </Nav.Link>
                 
-                <Nav.Link as={Link} className="navbar-link" to="/login">
-                    <Button className="align-middle" onClick={handleLogOut}>
-                        Log Out
-                    </Button>
-                </Nav.Link>
-                    
-                
+                { sessionStorage.getItem('Auth Token') &&
+                    <Nav.Link as={Link} className="navbar-link" to="/login">
+                        <Button className="align-middle" onClick={handleLogOut}>
+                            Logout
+                        </Button>
+                    </Nav.Link>
+                }
                 </Nav>
             </Container>
         </Navbar>
