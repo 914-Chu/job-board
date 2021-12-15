@@ -4,9 +4,11 @@ import {FaStar} from "react-icons/fa";
 
 type Props = {
     starsize: number;
+    onRate: (field: string, value: any) => void;
+    rateName: string;
 };
 
-const Rating = ({starsize}: Props) => {
+const Rating = ({starsize, onRate, rateName}: Props) => {
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
 
@@ -22,6 +24,8 @@ const Rating = ({starsize}: Props) => {
         }else{
             setRating(r);
         }
+
+        onRate(rateName, rating);
     }
 
     return (

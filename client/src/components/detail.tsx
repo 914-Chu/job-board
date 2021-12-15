@@ -86,7 +86,7 @@ const Detail = () => {
       <Card id="detail-card-left">
         <Card id="detail-card-left-top">
           <Card.Body>
-            <Card.Title id="main-title">{job?.title}</Card.Title>
+            <Card.Title id="main-title">{job.title}</Card.Title>
             <Card.Text>{job.description}</Card.Text>
             <div className="left-top-property">
               <Card.Title className="property-title">Job Type</Card.Title>
@@ -147,7 +147,7 @@ const Detail = () => {
             <Card.Text className="star-title">Flexibility</Card.Text>
             <Stars starsize={33} starval={avgRate[4]} />
           </div>
-          <Link to="/review">
+          <Link to={"/review/"+jobId}>
             <Button type="submit" id="rvwbtn">
               Review This Job
             </Button>

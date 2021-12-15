@@ -26,6 +26,7 @@ render(
                 <Route path="/detail" element={<Detail />}/>
                 <Route path="/detail/:jobId" element={<Detail />}/>
                 <Route path="/review" element={<Review />}/>
+                <Route path="/review/:jobId" element={<Review />}/>
                 <Route path="/postJob" element={<PostJob />}/>
                 <Route path="*" element={<main style={{ padding: "1rem" }}>
                                             <p>There's nothing here!</p>
