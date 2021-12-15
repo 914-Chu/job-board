@@ -17,7 +17,7 @@ const Main = () => {
         if (!authToken) {
             navigate('/login')
         }
-    }, [])
+    }, [navigate])
 
     const getNStars = (n: number) => {
         var components = [];

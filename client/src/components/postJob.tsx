@@ -86,7 +86,7 @@ const PostJob = () => {
         if (!authToken) {
             navigate('/login')
         }
-    }, [])
+    }, [navigate])
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
