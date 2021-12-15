@@ -2,7 +2,7 @@ import React from 'react';
 import './jobCard.css';
 import { Card, Button } from 'react-bootstrap';
 import {FaStar} from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 type JobProps = {
     title: string;
@@ -14,7 +14,6 @@ type JobProps = {
 }
 
 function JobCard({ title, location, description, rating, detailsLink, externalLink }:JobProps){
-    let navigate = useNavigate();
 
     const getNStars = (n: number) => {
         var components = [];
