@@ -88,13 +88,6 @@ const PostJob = () => {
         }
     }, [])
 
-    const [ title, setTitle ] = useState('');
-    const [ description, setDescription ] = useState('');
-    const [ location, setLocation ] = useState('');
-    const [ hourlyPay, setHourlyPay ] = useState(0.01);
-    const [ jobType, setJobType ] = useState('');
-    const [ weeklyHours, setWeeklyHours ] = useState(1);
-
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         const newErrors = findFormErrors();

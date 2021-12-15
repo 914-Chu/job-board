@@ -1,0 +1,28 @@
+#signup-bg {
+    background: url("../assests/quad.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#signup-btn {
+    background-color: #dd6b4d;
+    border: none;
+    text-align: center;
+    width: 100%;
+    line-height: 180%;
+    margin-top: 7%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 800;
+}
+
+.other-action {
+    margin: 10px auto;
+    text-align: center;
+}
+.other-action p{
+    font-size: 14px;
+}
+.other-action a{
+    text-decoration: none;
+}

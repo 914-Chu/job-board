@@ -3,7 +3,7 @@ import "./login.css";
 import logo from "../assests/uiuc logo.png"
 import { Form, Button} from "react-bootstrap";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { app } from "../firebase-config";
 
 const Login = () => {
@@ -55,14 +55,13 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          
             <Button type="submit" id="loginbtn">
               Submit
-            </Button>
-
-            
-            
+            </Button>       
           </Form>
+          <div className="other-action">
+              <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
+          </div>
         </div>
     </div>
   );
