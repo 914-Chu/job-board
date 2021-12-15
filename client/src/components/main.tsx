@@ -1,9 +1,36 @@
 import React, { useEffect, useState } from "react";
 import "./main.css";
-import { Col, Form, Row} from "react-bootstrap";
+import { Col, Form, InputGroup, Row} from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 import JobCard from "./JobCard/jobCard";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+export interface Jobs {
+    message: string;
+    data:    Datum[];
+}
+
+export interface Datum {
+    _id:            string;
+    title:          string;
+    description:    string;
+    externalLink:   string;
+    location:       string;
+    hourlyPay:      number;
+    employmentType: EmploymentType;
+    weeklyHours:    number;
+    ratingTotals:   number[];
+    numberReviews:  number;
+    datePosted:     Date;
+    __v:            number;
+}
+
+export enum EmploymentType {
+    EmploymentTypeFullTime = "full-time",
+    FullTime = "Full time",
+    PartTime = "Part time",
+}
 
 const Main = () => {
     let navigate = useNavigate();
@@ -11,11 +38,12 @@ const Main = () => {
         let authToken = sessionStorage.getItem('Auth Token')
 
         if (authToken) {
-            navigate('/main')
+            navigate('/main');
+            fetchData();
         }
 
         if (!authToken) {
-            navigate('/login')
+            navigate('/login');
         }
     }, [])
 
@@ -30,6 +58,8 @@ const Main = () => {
         }
         return components;
     }
+
+    const [ allJobs, setAllJobs ] = useState<Datum[]>([]);
 
     const [ locationFilter, setLocation ] = useState('');
     const [ searchFilter, setSearch ] = useState('');
@@ -66,6 +96,29 @@ const Main = () => {
             [e.target.id]: !e.target.value
         });
     }
+
+    const fetchData = async () => {
+        axios.get('api/jobs')
+        .then(function (res : any) {
+            let jobsRes = res.data.data;
+            // for (let i=0; i<jobsRes.length; i++) {
+            //     console.log(jobsRes[i])
+            // }
+            setAllJobs(jobsRes);
+        })
+        .catch(function (error) {
+
+        });
+    }
+
+    const getAllJobCards = allJobs.map((job) => (
+        <JobCard title={job.title}
+            description={job.description}
+            rating={job.ratingTotals[0]}
+            detailsLink="/detail"
+            externalLink={job.externalLink} />
+    ));
+
 
     return (
         <div id="main-bg">
@@ -157,23 +210,19 @@ const Main = () => {
 
                     <Form.Group as={Row} controlId="job-pay-range">
                         <Form.Label>
-                            Hourly Pay
+                            Min Hourly Pay
                         </Form.Label>
                         <Form.Group as={Row}>
-                            <Col xs="5">
-                                <Form.Control type="number" 
-                                    onChange={e => {setMinPay(Number(e.target.value))}} 
-                                    value={minPay} 
-                                    size='sm'/>
-                            </Col>
-                            <Col xs="2">
-                                -
-                            </Col>
-                            <Col xs="5">
-                                <Form.Control type="number" 
-                                    onChange={e => {setMaxPay(Number(e.target.value))}} 
-                                    value={maxPay} 
-                                    size='sm'/>
+                            <Col xs="12">
+                                <InputGroup>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                                    <Form.Control type="number" 
+                                        onChange={e => {setMinPay(Number(e.target.value))}} 
+                                        value={minPay}  
+                                        step={0.50}
+                                        min={0.00}
+                                        size='sm'/>
+                                </InputGroup>
                             </Col>
                         </Form.Group>
                     </Form.Group>
@@ -187,6 +236,7 @@ const Main = () => {
                                 <Form.Control type="number" 
                                     onChange={e => {setMinHours(Number(e.target.value))}} 
                                     value={minHours} 
+                                    min={1}
                                     size='sm'/>
                             </Col>
                             <Col xs="2">
@@ -196,6 +246,7 @@ const Main = () => {
                                 <Form.Control type="number" 
                                     onChange={e => {setMaxHours(Number(e.target.value))}} 
                                     value={maxHours} 
+                                    min={1}
                                     size='sm'/>
                             </Col>
                         </Form.Group>
@@ -203,36 +254,7 @@ const Main = () => {
                 </section>
 
                 <section className="main-jobs-section">
-                    <JobCard title="Full-Stack Developer"
-                        description="This is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
-                        rating={3}
-                        detailsLink="/detail"
-                        externalLink="/detail" />
-                    <JobCard title="Frontend Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
-                        rating={4}
-                        detailsLink="/detail"
-                        externalLink="/detail" />
-                    <JobCard title="Development and Operations Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
-                        rating={5}
-                        detailsLink="/detail"
-                        externalLink="/detail" />
-                    <JobCard title="Development and Operations Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
-                        rating={1}
-                        detailsLink="/detail"
-                        externalLink="/detail" />
-                    <JobCard title="Development and Operations Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
-                        rating={2}
-                        detailsLink="/detail"
-                        externalLink="/detail" />
-                    <JobCard title="Development and Operations Developer" 
-                        description="This is the description for the fullstack web development intern postion. It is used to provide context to the job listed and see if the user is actually interested in applying for the job."
-                        rating={2}
-                        detailsLink="/detail"
-                        externalLink="/detail" />
+                    { getAllJobCards }
                 </section>
             </div>
         </div>

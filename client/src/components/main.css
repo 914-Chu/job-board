@@ -42,7 +42,7 @@
 .main-jobs-section {
     display: grid;
     grid-gap: 1rem;
-    padding: 2rem 2rem;
+    padding: 1.5rem 2rem;
 }
 .main-filter-section .form-check {
     padding: 0 2rem;
