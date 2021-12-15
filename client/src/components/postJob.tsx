@@ -120,10 +120,18 @@ const PostJob = () => {
             .then(function (response) {
                 console.log(response);
                 setFormSubmitStatus('Created');
+                let jobId = response.data._id;
+                console.log(jobId);
+                setTimeout(() => {
+                    navigate('/main');
+                }, 3000);
             })
             .catch(function (error) {
                 console.log(error);
                 setFormSubmitStatus('Error');
+                setTimeout(() => {
+                    setFormSubmitStatus('Not Submitted');
+                }, 3000);
             });
         }
     }
@@ -134,23 +142,27 @@ const PostJob = () => {
                 <Card className="postJob-card-container">
                     <Card.Body className="postJob-card-message">
                         <img src={successImg}
-                            height="400px"
-                            width="400px" />
+                            height="300px"
+                            width="300px" />
                         <h4 className="success">
                             Job Successfully Posted!
                         </h4>
+                        <p>
+                            Redirecting to job posting...
+                        </p>
                     </Card.Body>
                 </Card>
             </div>
         )
+
     } else if (formSubmitStatus === 'Error') {
         return (
             <div id="postJob-bg">
                 <Card className="postJob-card-container">
                     <Card.Body className="postJob-card-message">
                         <img src={failImg}
-                            height="400px"
-                            width="400px" />
+                            height="300px"
+                            width="300px" />
                         <h4 className="fail">
                             Job Creation Failed. Please try again!
                         </h4>

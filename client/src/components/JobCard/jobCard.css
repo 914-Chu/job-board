@@ -1,4 +1,5 @@
 .job-card-container.card {
+    display: grid;
     overflow: hidden;
     height: 250px;
     border: none;
@@ -20,10 +21,25 @@
     text-overflow: ellipsis;
 }
 
+.job-location.card-subtitle {
+    padding: 0rem 1rem;
+    font-style: italic;
+    margin-bottom: 0 !important;
+    height: 1.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 14px;
+    font-weight: 700;
+    color: #e25531;
+}
+
 .job-body.card-body {
     display: grid;
-    grid-gap: 1rem;
+    grid-gap: 0.5rem;
     padding: 0 1rem;
+    align-items: center;
 }
 .job-body > * {
     height: fit-content;
