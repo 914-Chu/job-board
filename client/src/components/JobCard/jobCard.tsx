@@ -2,15 +2,18 @@ import React from 'react';
 import './jobCard.css';
 import { Card, Button } from 'react-bootstrap';
 import {FaStar} from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 type JobProps = {
     title: string;
+    location: string
     description: string;
     rating: number;
-    link: string;
+    detailsLink: string;
+    externalLink: string;
 }
 
-function JobCard({ title, description, rating, link }:JobProps){
+function JobCard({ title, location, description, rating, detailsLink, externalLink }:JobProps){
 
     const getNStars = (n: number) => {
         var components = [];
@@ -25,10 +28,13 @@ function JobCard({ title, description, rating, link }:JobProps){
     }
 
     return (
-        <Card className="job-card-container">
+        <Card as={Link} className="job-card-container" to={detailsLink}>
             <Card.Title className="job-title">
                 {title}
             </Card.Title>
+            <Card.Subtitle className="job-location">
+                {location}
+            </Card.Subtitle>
             <Card.Body className="job-body">
                 <div className="job-description">
                     {description}
@@ -38,8 +44,8 @@ function JobCard({ title, description, rating, link }:JobProps){
                         {getNStars(rating)}
                     </div>
                 </div>
-                <div>
-                    <Button className="job-apply">
+                <div className="job-externlink">
+                    <Button className="job-apply" onClick={() => window.open(externalLink)}>
                         Apply
                     </Button>
                 </div>

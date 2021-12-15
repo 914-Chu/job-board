@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./detail.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import Stars from "./stars";
 import Student from "./student";
 
 const Detail = () => {
   let rates = [5, 3, 2, 4, 3];
+
+  let navigate = useNavigate();
+  useEffect(() => {
+      let authToken = sessionStorage.getItem('Auth Token')
+
+      if (authToken) {
+          navigate('/detail')
+      }
+
+      if (!authToken) {
+          navigate('/login')
+      }
+  }, [navigate])
 
   return (
     <div id="detail-bg">

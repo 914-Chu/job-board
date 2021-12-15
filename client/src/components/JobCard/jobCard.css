@@ -1,14 +1,19 @@
-.job-card-container {
+.job-card-container.card {
+    display: grid;
+    overflow: hidden;
     height: 250px;
+    border: none;
     border-radius: 16px !important;
     box-shadow: 0 0 4px 1px rgb(0 0 0 / 5%), 1px 1px 1px 1px rgb(0 0 0 / 5%);
     padding: 10px;
-    
+
+    text-decoration: none;
+    color: black;
     font-size: 14px;
 }
 
 .job-title.card-title {
-    padding: 0 1rem;
+    padding: 0.5rem 1rem 0;
     margin-bottom: 0 !important;
     overflow: hidden;
     height: 2rem;
@@ -16,10 +21,25 @@
     text-overflow: ellipsis;
 }
 
-.job-body {
+.job-location.card-subtitle {
+    padding: 0rem 1rem;
+    font-style: italic;
+    margin-bottom: 0 !important;
+    height: 1.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 14px;
+    font-weight: 700;
+    color: #e25531;
+}
+
+.job-body.card-body {
     display: grid;
-    grid-gap: 1rem;
-    padding-top: 0px;
+    grid-gap: 0.5rem;
+    padding: 0 1rem;
+    align-items: center;
 }
 .job-body > * {
     height: fit-content;
@@ -42,4 +62,8 @@
     border-color: #1C4B82;
 
     text-transform: uppercase;
+}
+
+.job-externlink {
+    z-index: 10;
 }

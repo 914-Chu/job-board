@@ -28,3 +28,8 @@
     align-items: center;
     gap: 5px;
 }
+
+.navbar-link button {
+    border-color: #dd6b4d;
+    background-color: #dd6b4d;
+}

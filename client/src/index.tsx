@@ -10,6 +10,7 @@ import Review from "./components/review";
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PostJob from "./components/postJob";
+import SignUp from "./components/signup";
 
 const rootElement = document.getElementById("root");
 render(
@@ -20,6 +21,7 @@ render(
             <Routes>
                 <Route path="/" element={<Login />}/>
                 <Route path="/login" element={<Login />}/>
+                <Route path="/signup" element={<SignUp />}/>
                 <Route path="/main" element={<Main />}/>
                 <Route path="/detail" element={<Detail />}/>
                 <Route path="/review" element={<Review />}/>

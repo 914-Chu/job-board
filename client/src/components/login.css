@@ -87,3 +87,14 @@
     box-shadow: 3px 5px rgb(146, 146, 146);
     transform: translateY(4px);
 }
+
+.other-action {
+    margin: 10px auto;
+    text-align: center;
+}
+.other-action p{
+    font-size: 14px;
+}
+.other-action a{
+    text-decoration: none;
+}
