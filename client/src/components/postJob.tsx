@@ -136,6 +136,8 @@ const PostJob = () => {
         }
     }
 
+    console.log(form);
+
     if (formSubmitStatus === 'Created') {
         return (
             <div id="postJob-bg">
@@ -261,8 +263,8 @@ const PostJob = () => {
                                     onChange={(e) => {setField('employmentType', e.target.value)}}
                                     isInvalid={ !!errors.employmentType } >
                                     <option>Not Selected</option>
-                                    <option value="full-time">Full Time</option>
-                                    <option value="part-time">Part Time</option>
+                                    <option value="Full time">Full Time</option>
+                                    <option value="Part time">Part Time</option>
                                 </Form.Select>
                                 <Form.Control.Feedback type='invalid'>
                                     { errors.employmentType }
