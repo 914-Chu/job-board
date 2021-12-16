@@ -207,7 +207,6 @@ const Main = () => {
             if (ratingsFilter.five === true) {
                 toBeIncluded.push(5);
             }
-            console.log(toBeIncluded)
             results = results.filter((job) => {
                 return toBeIncluded.includes(job.ratingTotals[0]);
             })
@@ -230,8 +229,6 @@ const Main = () => {
                 return job.weeklyHours <= maxHoursFilter;
             })
         }
-
-        console.log(results);
 
         setFilteredJobs(results);
     }

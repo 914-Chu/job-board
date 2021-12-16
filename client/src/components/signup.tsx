@@ -34,7 +34,6 @@ const SignUp = () => {
 
             axios.post('/api/users', user)
             .then((response : any) => {
-                console.log(response)
             })
             .catch((error : any) => {
                 console.log(error)

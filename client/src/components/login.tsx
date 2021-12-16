@@ -17,8 +17,6 @@ const Login = () => {
     event.preventDefault();
 
     const auth = getAuth(app);
-
-    console.log(email, password);
     
     signInWithEmailAndPassword(auth, email, password)
     .then((response : any) => {

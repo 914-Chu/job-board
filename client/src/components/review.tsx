@@ -98,7 +98,6 @@ const Review = () => {
       .get("/api/users/" + email)
       .then((res) => {
         let name = res.data.data[0].name;
-        console.log(name);
         setUserName(name);
         setId(jobId);
         setField("reviewerName", name);
@@ -118,14 +117,10 @@ const Review = () => {
       console.log(errors);
     } else {
       review.reviewerName = userName;
-      console.log(review);
       axios
         .post(window.location.origin + "/api/reviews/", review)
         .then(function (response) {
-          console.log(response);
           setSubmitStatus("Created");
-          let reviewId = response.data.data._id;
-          console.log(reviewId);
           setTimeout(() => {
             navigate("/main");
           }, 3000);

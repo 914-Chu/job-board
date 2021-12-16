@@ -115,13 +115,10 @@ const PostJob = () => {
             setErrors(newErrors);
             console.log(errors);
         } else {
-            console.log(form);
             axios.post('api/jobs', form)
             .then(function (response) {
-                console.log(response);
                 setFormSubmitStatus('Created');
                 let jobId = response.data.data._id;
-                console.log(jobId);
                 setTimeout(() => {
                     navigate(`/detail/${jobId}`);
                 }, 3000);
@@ -135,8 +132,6 @@ const PostJob = () => {
             });
         }
     }
-
-    console.log(form);
 
     if (formSubmitStatus === 'Created') {
         return (

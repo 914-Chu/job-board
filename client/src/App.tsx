@@ -8,7 +8,6 @@ function App() {
     const sayHello = async () => {
       const response = await fetch("/api/hello");
       const body = await response.json();
-      console.log(body);
     };
     sayHello();
 }, []);
