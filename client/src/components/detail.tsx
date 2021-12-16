@@ -137,11 +137,11 @@ const Detail = () => {
                     {job.location}
                   </Card.Text>
                 </div>
-                <Link to={job.externalLink}>
+                <a href={job.externalLink} target="_blank" rel="noreferrer">
                   <Button type="submit" id="applybtn">
                     Apply
                   </Button>
-                </Link>
+                </a>
               </Card.Body>
             </Card>
           </Card>
@@ -174,7 +174,7 @@ const Detail = () => {
                 </Button>
               </Link>
               <Card id="student-review">
-              {/*reviews.map(....) */}
+                {/*reviews.map(....) */}
                 <Student
                   id={"123456789"}
                   date={new Date()}
