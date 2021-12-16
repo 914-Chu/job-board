@@ -32,9 +32,22 @@ export interface detailParmas {
   job: Datum;
 }
 
-const Detail = () => {
-  let rates = [5, 3, 2, 4, 3];
+export interface Review {
+  _id:             string;
+  overall:         number;
+  workLifeBalance: number;
+  culture:         number;
+  transportation:  number;
+  flexibility:     number;
+  headline:        string;
+  reviewText:      string;
+  jobReviewed:     string;
+  reviewerName:    string;
+  dateCreated:     Date;
+}
 
+
+const Detail = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState<Datum>({
     _id: "N/A",
@@ -51,7 +64,7 @@ const Detail = () => {
     __v: 0,
   });
   const [avgRate, setAvgRate] = useState<number[]>([0, 0, 0, 0, 0]);
-  const [reviews, setReviews] = useState<string[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
 
   let navigate = useNavigate();
   useEffect(() => {
@@ -69,26 +82,23 @@ const Detail = () => {
     axios
       .get(window.location.origin + "/api/jobs/" + jobId)
       .then((res) => {
-        console.log("data", res);
+    
         setJob(res.data.data);
+        axios.get(window.location.origin + "/api/reviews", {
+          params: {
+            where: {"jobReviewed":jobId},
+          },
+        })
+        .then((res) => {
+          setReviews(res.data.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       })
       .catch(function (error) {
         console.log(error);
       });
-    // axios
-    //   .get("/api/reviews", {
-    //     params: {
-    //       where: jobId,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     console.log("data:::: ", res);
-
-    //     //setReviews(res.data.data);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
   };
 
   const calculateRate = () => {
@@ -174,17 +184,20 @@ const Detail = () => {
                 </Button>
               </Link>
               <Card id="student-review">
-                {/*reviews.map(....) */}
-                <Student
-                  id={"123456789"}
-                  date={new Date()}
-                  name={"name"}
-                  headline={"headline"}
-                  review={
-                    "review aldkjfa;sdlkfja;ejfaslkdjfa;lsdfkja;ld kfja;sldk fjasldkjfa; sldkjfd"
-                  }
-                  rate={rates}
-                />
+                {reviews.map((review:Review) => (
+                  <Student
+                    id={review._id}
+                    date={new Date(review.dateCreated)}
+                    name={review.reviewerName}
+                    headline={review.headline}
+                    review={review.reviewText}
+                    rate={[ review.overall,
+                            review.workLifeBalance,
+                            review.culture,
+                            review.transportation,
+                            review.flexibility]} />
+                  ))
+                }
               </Card>
             </Card.Body>
           </Card>
