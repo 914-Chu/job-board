@@ -143,9 +143,8 @@ const Review = () => {
   if (sumbitStatus === "Created") {
     return (
       <div id="review-bg">
-        <Card className="review-card">
-          <Card.Title id="review-card-title">Create Review</Card.Title>
-          <Card.Body id="review-content">
+        <Card className="postJob-card-container">
+          <Card.Body className="postJob-card-message">
             <img src={successImg} height="300px" width="300px" alt="Success" />
             <h4 className="success">Job Successfully Posted!</h4>
             <p>Redirecting to job posting...</p>
@@ -156,9 +155,8 @@ const Review = () => {
   } else if (sumbitStatus === "Error") {
     return (
       <div id="review-bg">
-        <Card className="review-card">
-          <Card.Title id="review-card-title">Create Review</Card.Title>
-          <Card.Body id="review-content">
+        <Card className="postJob-card-container">
+          <Card.Body className="postJob-card-message">
             <img src={failImg} height="300px" width="300px" alt="Failure" />
             <h4 className="fail">Review Creation Failed. Please try again!</h4>
           </Card.Body>
