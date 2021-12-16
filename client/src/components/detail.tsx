@@ -74,7 +74,6 @@ const Detail = () => {
     }
 
     fetchData();
-    calculateRate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
@@ -84,6 +83,10 @@ const Detail = () => {
       .then((res) => {
     
         setJob(res.data.data);
+        let ratings: number[] = res.data.data.ratingTotals.map((e:number) =>
+          Math.round(e / res.data.data.numberReviews)
+        );
+        setAvgRate(ratings);
         axios.get(window.location.origin + "/api/reviews", {
           params: {
             where: {"jobReviewed":jobId},
@@ -99,13 +102,6 @@ const Detail = () => {
       .catch(function (error) {
         console.log(error);
       });
-  };
-
-  const calculateRate = () => {
-    let temp: number[] = job.ratingTotals.map((e) =>
-      Math.round(e / job.numberReviews)
-    );
-    setAvgRate(temp);
   };
 
   return (
