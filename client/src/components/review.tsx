@@ -37,12 +37,7 @@ const Review = () => {
 
   const [sumbitStatus, setSubmitStatus] = useState("not submitted");
   const [userName, setUserName] = useState("");
-
-  const email = sessionStorage.getItem("email");
-  axios.get("/api/users/" + email).then((res) => {
-    let name = res.data.data[0].name;
-    setUserName(name);
-  });
+  const [id, setId] = useState(jobId);
 
   const [review, setReview] = useState<reviewForm>({
     overall: 0,
@@ -109,11 +104,22 @@ const Review = () => {
       navigate("/login");
     }
 
-    setField("reviewerName", userName);
-    // setField("jobReviewed", jobId);
-
+    const email = sessionStorage.getItem("email");
+    axios
+      .get("/api/users/" + email)
+      .then((res) => {
+        let name = res.data.data[0].name;
+        console.log(name);
+        setUserName(name);
+        setId(jobId);
+        setField("reviewerName", name);
+        setField("jobReviewed", id);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate, userName]);
+  }, [navigate, userName, id]);
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -122,25 +128,26 @@ const Review = () => {
       setErrors(newErrors);
       console.log(errors);
     } else {
+      review.reviewerName = userName;
       console.log(review);
-      // axios
-      //   .post("api/reviews", review)
-      //   .then(function (response) {
-      //     console.log(response);
-      //     setSubmitStatus("Created");
-      //     let jobId = response.data.data._id;
-      //     console.log(jobId);
-      //     setTimeout(() => {
-      //       navigate("/main");
-      //     }, 3000);
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //     setSubmitStatus("Error");
-      //     setTimeout(() => {
-      //       setSubmitStatus("Not Submitted");
-      //     }, 3000);
-      //   });
+      axios
+        .post(window.location.origin + "/api/reviews/", review)
+        .then(function (response) {
+          console.log(response);
+          setSubmitStatus("Created");
+          let reviewId = response.data.data._id;
+          console.log(reviewId);
+          setTimeout(() => {
+            navigate("/main");
+          }, 3000);
+        })
+        .catch(function (error) {
+          console.log(error);
+          setSubmitStatus("Error");
+          setTimeout(() => {
+            setSubmitStatus("Not Submitted");
+          }, 3000);
+        });
     }
   };
 
@@ -173,108 +180,122 @@ const Review = () => {
 
   return (
     <div id="review-bg">
-      <Card className="review-card">
-        <Card.Title id="review-card-title">Create Review</Card.Title>
-        <Card.Body id="review-content">
-          <Form className="review-form">
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={5}>
-                Overall Rating
-              </Form.Label>
-              <Col className="rate" sm={7}>
-                <Rating starsize={40} onRate={setField} rateName={"overall"} />
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={5}>
-                Work Life Balance
-              </Form.Label>
-              <Col className="rate" sm={7}>
-                <Rating
-                  starsize={40}
-                  onRate={setField}
-                  rateName={"workLifeBalance"}
-                />
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={5}>
-                Culture
-              </Form.Label>
-              <Col className="rate" sm={7}>
-                <Rating starsize={40} onRate={setField} rateName={"culture"} />
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={5}>
-                Transportation
-              </Form.Label>
-              <Col className="rate" sm={7}>
-                <Rating
-                  starsize={40}
-                  onRate={setField}
-                  rateName={"transportation"}
-                />
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={5}>
-                Flexibility
-              </Form.Label>
-              <Col className="rate" sm={7}>
-                <Rating
-                  starsize={40}
-                  onRate={setField}
-                  rateName={"flexibility"}
-                />
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={5}>
-                Add a headline
-              </Form.Label>
-              <Col className="rate" sm={7}>
-                <Form.Control
-                  as="textarea"
-                  size="sm"
-                  id="headline"
-                  onChange={(e) => {
-                    setField("headline", e.target.value);
-                  }}
-                  isInvalid={!!errors.headline}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.headline}
-                </Form.Control.Feedback>
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={5}>
-                Add a review
-              </Form.Label>
-              <Col className="rate" sm={7}>
-                <Form.Control
-                  as="textarea"
-                  size="sm"
-                  id="review"
-                  onChange={(e) => {
-                    setField("reviewText", e.target.value);
-                  }}
-                  isInvalid={!!errors.reviewText}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.reviewText}
-                </Form.Control.Feedback>
-              </Col>
-            </Form.Group>
-            <Link to="/main">
-              <Button type="submit" id="submitbtn" onClick={handleSubmit}>
-                Submit
-              </Button>
-            </Link>
-          </Form>
-        </Card.Body>
-      </Card>
+      {userName && id ? (
+        <>
+          <Card className="review-card">
+            <Card.Title id="review-card-title">Create Review</Card.Title>
+            <Card.Body id="review-content">
+              <Form className="review-form">
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label column sm={5}>
+                    Overall Rating
+                  </Form.Label>
+                  <Col className="rate" sm={7}>
+                    <Rating
+                      starsize={40}
+                      onRate={setField}
+                      rateName={"overall"}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label column sm={5}>
+                    Work Life Balance
+                  </Form.Label>
+                  <Col className="rate" sm={7}>
+                    <Rating
+                      starsize={40}
+                      onRate={setField}
+                      rateName={"workLifeBalance"}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label column sm={5}>
+                    Culture
+                  </Form.Label>
+                  <Col className="rate" sm={7}>
+                    <Rating
+                      starsize={40}
+                      onRate={setField}
+                      rateName={"culture"}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label column sm={5}>
+                    Transportation
+                  </Form.Label>
+                  <Col className="rate" sm={7}>
+                    <Rating
+                      starsize={40}
+                      onRate={setField}
+                      rateName={"transportation"}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label column sm={5}>
+                    Flexibility
+                  </Form.Label>
+                  <Col className="rate" sm={7}>
+                    <Rating
+                      starsize={40}
+                      onRate={setField}
+                      rateName={"flexibility"}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label column sm={5}>
+                    Add a headline
+                  </Form.Label>
+                  <Col className="rate" sm={7}>
+                    <Form.Control
+                      as="textarea"
+                      size="sm"
+                      id="headline"
+                      onChange={(e) => {
+                        setField("headline", e.target.value);
+                      }}
+                      isInvalid={!!errors.headline}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.headline}
+                    </Form.Control.Feedback>
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label column sm={5}>
+                    Add a review
+                  </Form.Label>
+                  <Col className="rate" sm={7}>
+                    <Form.Control
+                      as="textarea"
+                      size="sm"
+                      id="review"
+                      onChange={(e) => {
+                        setField("reviewText", e.target.value);
+                      }}
+                      isInvalid={!!errors.reviewText}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.reviewText}
+                    </Form.Control.Feedback>
+                  </Col>
+                </Form.Group>
+                <Link to="/main">
+                  <Button type="submit" id="submitbtn" onClick={handleSubmit}>
+                    Submit
+                  </Button>
+                </Link>
+              </Form>
+            </Card.Body>
+          </Card>
+        </>
+      ) : (
+        <p>Nothing</p>
+      )}
     </div>
   );
 };
