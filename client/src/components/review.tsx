@@ -70,18 +70,7 @@ const Review = () => {
   };
 
   const findFormErrors = () => {
-    const {
-      overall,
-      workLifeBalance,
-      culture,
-      transportation,
-      flexibility,
-      headline,
-      reviewText,
-      jobReviewed,
-      reviewerName,
-      dateCreated,
-    } = review;
+    const { headline, reviewText } = review;
 
     const newErrors: errorForm = {
       headline: "",
