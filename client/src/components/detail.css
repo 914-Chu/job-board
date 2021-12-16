@@ -6,8 +6,8 @@
 }
 
 #detail-des {
-  overflow: auto;
-  max-height: 80%;
+  margin-top: 3%;
+  height: auto;
 }
 
 #detail-card-left {
@@ -30,8 +30,9 @@
 }
 
 #detail-card-left-bottom {
+  margin-top: 6%;
   height: 56%;
-  top: 3.1%;
+  top: 3%;
   border-color: transparent;
 }
 
@@ -51,6 +52,7 @@
 .property-text {
   position: relative;
   left: 15%;
+  width: 50%;
 }
 
 #applybtn {
@@ -59,7 +61,7 @@
   text-align: center;
   width: 20%;
   line-height: 140%;
-  margin-top: 2.6%;
+  margin-top: 4%;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
   font-size: 105%;
