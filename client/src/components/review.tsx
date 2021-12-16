@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./review.css";
 import Rating from "./rating";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Card, Form, Button, Col, Row } from "react-bootstrap";
 import axios from "axios";
 import successImg from "../assests/success.png";
@@ -26,9 +26,24 @@ type errorForm = {
   reviewText: string;
 };
 
+export interface detailParmas {
+  jobId: string;
+}
+
 const Review = () => {
   document.body.style.overflow = "hidden";
+
+  const { jobId } = useParams();
+
   const [sumbitStatus, setSubmitStatus] = useState("not submitted");
+  const [userName, setUserName] = useState("");
+
+  const email = sessionStorage.getItem("email");
+  axios.get("/api/users/" + email).then((res) => {
+    let name = res.data.data[0].name;
+    setUserName(name);
+  });
+
   const [review, setReview] = useState<reviewForm>({
     overall: 0,
     workLifeBalance: 0,
@@ -52,7 +67,6 @@ const Review = () => {
       ...review,
       [field]: value,
     });
-
     if (!!errors[field])
       setErrors({
         ...errors,
@@ -91,19 +105,15 @@ const Review = () => {
   useEffect(() => {
     let authToken = sessionStorage.getItem("Auth Token");
 
-    if (authToken) {
-      navigate("/review");
-    }
-
     if (!authToken) {
       navigate("/login");
     }
-  }, [navigate]);
 
-  const email = sessionStorage.getItem("email");
-  axios.get("/api/users/" + email).then((res) => {
-    console.log(res);
-  });
+    setField("reviewerName", userName);
+    // setField("jobReviewed", jobId);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, userName]);
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -114,11 +124,11 @@ const Review = () => {
     } else {
       console.log(review);
       // axios
-      //   .post("api/jobs", review)
+      //   .post("api/reviews", review)
       //   .then(function (response) {
       //     console.log(response);
       //     setSubmitStatus("Created");
-      //     let jobId = response.data._id;
+      //     let jobId = response.data.data._id;
       //     console.log(jobId);
       //     setTimeout(() => {
       //       navigate("/main");
@@ -248,7 +258,7 @@ const Review = () => {
                   size="sm"
                   id="review"
                   onChange={(e) => {
-                    setField("headline", e.target.value);
+                    setField("reviewText", e.target.value);
                   }}
                   isInvalid={!!errors.reviewText}
                 />

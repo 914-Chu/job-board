@@ -1,141 +1,146 @@
 #detail-bg {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    display: flex;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
 }
 
-#detail-card-left{
-    width: 58%;
-    height: 130%;
-    border-color: transparent;
-    margin-right: 0px;
-    border: 0;
+#detail-des {
+  overflow: auto;
+  max-height: 80%;
 }
 
-#detail-card-left-top{
-    height: 41%;
-    border-color: transparent;
+#detail-card-left {
+  width: 58%;
+  height: 130%;
+  border-color: transparent;
+  margin-right: 0px;
+  border: 0;
 }
 
-#main-title{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 170%;
-    font-weight: 650;
+#detail-card-left-top {
+  height: 41%;
+  border-color: transparent;
 }
 
-#detail-card-left-bottom{
-    height: 56%;
-    top: 3.1%;
-    border-color: transparent;
+#main-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 170%;
+  font-weight: 650;
 }
 
-#left-bottom-body{
-    padding-top: 0.5%;
+#detail-card-left-bottom {
+  height: 56%;
+  top: 3.1%;
+  border-color: transparent;
 }
 
-.left-top-property{
-    margin-top: 0.8%;
-    display: flex;
+#left-bottom-body {
+  padding-top: 0.5%;
 }
 
-.property-title{
-    width: 20%;
+.left-top-property {
+  margin-top: 0.8%;
+  display: flex;
 }
 
-.property-text{
-    position: relative;
-    left: 15%;
+.property-title {
+  width: 20%;
 }
 
-#applybtn{
-    background-color: #dd6b4d;
-    border: none;
-    text-align: center;
-    width: 20%;
-    line-height: 140%;
-    margin-top: 2.6%;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 800;
-    font-size: 105%;
+.property-text {
+  position: relative;
+  left: 15%;
 }
 
-#applybtn:hover{
-    background-color: #e25632;
+#applybtn {
+  background-color: #dd6b4d;
+  border: none;
+  text-align: center;
+  width: 20%;
+  line-height: 140%;
+  margin-top: 2.6%;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 800;
+  font-size: 105%;
 }
 
-#applybtn:active{
-    background-color: #e25632;
-    box-shadow: 3px 5px rgb(146, 146, 146);
-    transform: translateY(4px);
+#applybtn:hover {
+  background-color: #e25632;
 }
 
-.detail-address{
-    display: flex;
+#applybtn:active {
+  background-color: #e25632;
+  box-shadow: 3px 5px rgb(146, 146, 146);
+  transform: translateY(4px);
 }
 
-#detail-busroute{
-    width:35%;
-    height:90%;
-    padding-left: 0%;
+.detail-address {
+  display: flex;
 }
 
-#detail-card-right{
-    right:0%;
-    width: 42%;
-    height: 130%;
-    border-radius: 0%;
-    position: relative;
+#detail-busroute {
+  width: 35%;
+  height: 90%;
+  padding-left: 0%;
 }
 
-#review-title{
-    position: relative;
-    font-size: 155%;
-    margin-bottom: 0;
+#detail-card-right {
+  right: 0%;
+  width: 42%;
+  height: 130%;
+  border-radius: 0%;
+  position: relative;
 }
 
-.review-star{
-    position: relative;
-    top:2.1%;
-    display: flex;
+#review-title {
+  position: relative;
+  font-size: 155%;
+  margin-bottom: 0;
 }
 
-.star-title{
-    font-weight: 600;
-    font-size: 140%;
-    width: 45%;
-    margin-bottom: 1.2%;
+.review-star {
+  position: relative;
+  top: 2.1%;
+  display: flex;
 }
 
-#rvwbtn{
-    background-color: #ffffff;
-    border: 2px solid rgb(228, 228, 228);
-    text-align: center;
-    width: 30%;
-    line-height: 130%;
-    margin-top: 0%;
-    position: relative;
-    top: 3.6%;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 800;
-    color: black;
+.star-title {
+  font-weight: 600;
+  font-size: 140%;
+  width: 45%;
+  margin-bottom: 1.2%;
 }
 
-#rvwbtn:hover{
-    background-color: #e25632;
+#rvwbtn {
+  background-color: #ffffff;
+  border: 2px solid rgb(228, 228, 228);
+  text-align: center;
+  width: 30%;
+  line-height: 130%;
+  margin-top: 0%;
+  position: relative;
+  top: 3.6%;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 800;
+  color: black;
 }
 
-#rvwbtn:active{
-    background-color: #e25632;
-    box-shadow: 3px 5px rgb(146, 146, 146);
-    transform: translateY(4px);
+#rvwbtn:hover {
+  background-color: #e25632;
 }
 
-#student-review{
-    position: absolute;
-    width: 95%;
-    height: 53%;
-    top: 44%;
-    overflow:auto;
-    border: 0;
+#rvwbtn:active {
+  background-color: #e25632;
+  box-shadow: 3px 5px rgb(146, 146, 146);
+  transform: translateY(4px);
+}
+
+#student-review {
+  position: absolute;
+  width: 95%;
+  height: 53%;
+  top: 44%;
+  overflow: auto;
+  border: 0;
 }

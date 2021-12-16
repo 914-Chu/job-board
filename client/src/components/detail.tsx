@@ -51,6 +51,7 @@ const Detail = () => {
     __v: 0,
   });
   const [avgRate, setAvgRate] = useState<number[]>([0, 0, 0, 0, 0]);
+  const [reviews, setReviews] = useState<string[]>([]);
 
   let navigate = useNavigate();
   useEffect(() => {
@@ -59,19 +60,35 @@ const Detail = () => {
       navigate("/login");
     }
 
-    fetchData();      
-    calculateRate();  
+    fetchData();
+    calculateRate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate]); 
+  }, [navigate]);
 
   const fetchData = async () => {
-    axios.get(window.location.origin + "/api/jobs/" + jobId).then((res) => {
-        console.log("data", res)
-      setJob(res.data.data);
-    })
-    .catch(function (error) {
-        console.log(error)
-    });
+    axios
+      .get(window.location.origin + "/api/jobs/" + jobId)
+      .then((res) => {
+        console.log("data", res);
+        setJob(res.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    // axios
+    //   .get("/api/reviews", {
+    //     params: {
+    //       where: jobId,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log("data:::: ", res);
+
+    //     //setReviews(res.data.data);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
 
   const calculateRate = () => {
@@ -83,130 +100,98 @@ const Detail = () => {
 
   return (
     <div id="detail-bg">
-        { job ?
-        <><Card id="detail-card-left">
-                  <Card id="detail-card-left-top">
-                      <Card.Body>
-                          <Card.Title id="main-title">{job.title}</Card.Title>
-                          <Card.Text>{job.description}</Card.Text>
-                          <div className="left-top-property">
-                              <Card.Title className="property-title">Job Type</Card.Title>
-                              <Card.Text className="property-text">
-                                  {job?.employmentType}
-                              </Card.Text>
-                          </div>
-                          <div className="left-top-property">
-                              <Card.Title className="property-title">Weekly Hours</Card.Title>
-                              <Card.Text className="property-text">
-                                  {job?.weeklyHours}
-                              </Card.Text>
-                          </div>
-                          <div className="left-top-property">
-                              <Card.Title className="property-title">Hourly Pay</Card.Title>
-                              <Card.Text className="property-text">{job.hourlyPay}</Card.Text>
-                          </div>
-                          <Link to={job.externalLink}>
-                              <Button type="submit" id="applybtn">
-                                  Apply
-                              </Button>
-                          </Link>
-                      </Card.Body>
-                  </Card>
-                  <Card id="detail-card-left-bottom">
-                      <Card.Body id="left-bottom-body">
-                          <div className="detail-address">
-                              <Card.Title className="property-title">Location</Card.Title>
-                              <Card.Text className="property-text">{job.location}</Card.Text>
-                          </div>
-                          <Card.Body id="detail-busroute">
-                              <Card.Title>Nearby Bus Route</Card.Title>
-                              <Card.Text>blah blah</Card.Text>
-                          </Card.Body>
-                      </Card.Body>
-                  </Card>
-              </Card><Card id="detail-card-right">
-                      <Card.Body>
-                          <Card.Title id="review-title">Student Review</Card.Title>
-                          <div className="review-star">
-                              <Card.Text className="star-title">Overall</Card.Text>
-                              <Stars starsize={33} starval={avgRate[0]} />
-                          </div>
-                          <div className="review-star">
-                              <Card.Text className="star-title">Work Life Balance</Card.Text>
-                              <Stars starsize={33} starval={avgRate[1]} />
-                          </div>
-                          <div className="review-star">
-                              <Card.Text className="star-title">Culture</Card.Text>
-                              <Stars starsize={33} starval={avgRate[2]} />
-                          </div>
-                          <div className="review-star">
-                              <Card.Text className="star-title">Transportation</Card.Text>
-                              <Stars starsize={33} starval={avgRate[3]} />
-                          </div>
-                          <div className="review-star">
-                              <Card.Text className="star-title">Flexibility</Card.Text>
-                              <Stars starsize={33} starval={avgRate[4]} />
-                          </div>
-                          <Link to="/review">
-                              <Button type="submit" id="rvwbtn">
-                                  Review This Job
-                              </Button>
-                          </Link>
-                          <Card id="student-review">
-                              <Student
-                                  id={"123456789"}
-                                  date={new Date()}
-                                  name={"name"}
-                                  headline={"headline"}
-                                  review={"review aldkjfa;sdlkfja;ejfaslkdjfa;lsdfkja;ld kfja;sldk fjasldkjfa; sldkjfd"}
-                                  rate={rates} />
-                              <Student
-                                  id={"123456789"}
-                                  date={new Date()}
-                                  name={"name"}
-                                  headline={"headline"}
-                                  review={"review"}
-                                  rate={rates} />
-                              <Student
-                                  id={"123456789"}
-                                  date={new Date()}
-                                  name={"name"}
-                                  headline={"headline"}
-                                  review={"review"}
-                                  rate={rates} />
-                              <Student
-                                  id={"123456789"}
-                                  date={new Date()}
-                                  name={"name"}
-                                  headline={"headline"}
-                                  review={"review"}
-                                  rate={rates} />
-                              <Student
-                                  id={"123456789"}
-                                  date={new Date()}
-                                  name={"name"}
-                                  headline={"headline"}
-                                  review={"review"}
-                                  rate={rates} />
-                              <Student
-                                  id={"123456789"}
-                                  date={new Date()}
-                                  name={"name"}
-                                  headline={"headline"}
-                                  review={"review"}
-                                  rate={rates} />
-                              <Student
-                                  id={"123456789"}
-                                  date={new Date()}
-                                  name={"name"}
-                                  headline={"headline"}
-                                  review={"review"}
-                                  rate={rates} />
-                          </Card>
-                      </Card.Body>
-        </Card></>
-        : <p>Nothing</p>
-        }
+      {job ? (
+        <>
+          <Card id="detail-card-left">
+            <Card id="detail-card-left-top">
+              <Card.Body>
+                <Card.Title id="main-title">{job.title}</Card.Title>
+                <Card.Text id="detail-des">{job.description}</Card.Text>
+              </Card.Body>
+            </Card>
+            <Card id="detail-card-left-bottom">
+              <Card.Body id="left-bottom-body">
+                <div className="left-top-property">
+                  <Card.Title className="property-title">Job Type</Card.Title>
+                  <Card.Text className="property-text">
+                    {job?.employmentType}
+                  </Card.Text>
+                </div>
+                <div className="left-top-property">
+                  <Card.Title className="property-title">
+                    Weekly Hours
+                  </Card.Title>
+                  <Card.Text className="property-text">
+                    {job?.weeklyHours}
+                  </Card.Text>
+                </div>
+                <div className="left-top-property">
+                  <Card.Title className="property-title">Hourly Pay</Card.Title>
+                  <Card.Text className="property-text">
+                    {job.hourlyPay}
+                  </Card.Text>
+                </div>
+                <div className="detail-address">
+                  <Card.Title className="property-title">Location</Card.Title>
+                  <Card.Text className="property-text">
+                    {job.location}
+                  </Card.Text>
+                </div>
+                <Link to={job.externalLink}>
+                  <Button type="submit" id="applybtn">
+                    Apply
+                  </Button>
+                </Link>
+              </Card.Body>
+            </Card>
+          </Card>
+          <Card id="detail-card-right">
+            <Card.Body>
+              <Card.Title id="review-title">Student Review</Card.Title>
+              <div className="review-star">
+                <Card.Text className="star-title">Overall</Card.Text>
+                <Stars starsize={33} starval={avgRate[0]} />
+              </div>
+              <div className="review-star">
+                <Card.Text className="star-title">Work Life Balance</Card.Text>
+                <Stars starsize={33} starval={avgRate[1]} />
+              </div>
+              <div className="review-star">
+                <Card.Text className="star-title">Culture</Card.Text>
+                <Stars starsize={33} starval={avgRate[2]} />
+              </div>
+              <div className="review-star">
+                <Card.Text className="star-title">Transportation</Card.Text>
+                <Stars starsize={33} starval={avgRate[3]} />
+              </div>
+              <div className="review-star">
+                <Card.Text className="star-title">Flexibility</Card.Text>
+                <Stars starsize={33} starval={avgRate[4]} />
+              </div>
+              <Link to={`/review/${jobId}`}>
+                <Button type="submit" id="rvwbtn">
+                  Review This Job
+                </Button>
+              </Link>
+              <Card id="student-review">
+              {/*reviews.map(....) */}
+                <Student
+                  id={"123456789"}
+                  date={new Date()}
+                  name={"name"}
+                  headline={"headline"}
+                  review={
+                    "review aldkjfa;sdlkfja;ejfaslkdjfa;lsdfkja;ld kfja;sldk fjasldkjfa; sldkjfd"
+                  }
+                  rate={rates}
+                />
+              </Card>
+            </Card.Body>
+          </Card>
+        </>
+      ) : (
+        <p>Nothing</p>
+      )}
     </div>
   );
 };
