@@ -208,7 +208,7 @@ const Main = () => {
                 toBeIncluded.push(5);
             }
             results = results.filter((job) => {
-                return toBeIncluded.includes(job.ratingTotals[0]);
+                return toBeIncluded.includes(Math.round(job.ratingTotals[0] / job.numberReviews));
             })
         }
 
@@ -237,7 +237,7 @@ const Main = () => {
         <JobCard title={job.title}
             location={job.location}
             description={job.description}
-            rating={job.ratingTotals[0]}
+            rating={Math.round(job.ratingTotals[0] / job.numberReviews)}
             detailsLink={`/detail/${job._id}`}
             externalLink={job.externalLink} />
     ));

@@ -31,8 +31,6 @@ export interface detailParmas {
 }
 
 const Review = () => {
-  document.body.style.overflow = "hidden";
-
   const { jobId } = useParams();
 
   const [sumbitStatus, setSubmitStatus] = useState("not submitted");

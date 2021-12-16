@@ -33,19 +33,18 @@ export interface detailParmas {
 }
 
 export interface Review {
-  _id:             string;
-  overall:         number;
+  _id: string;
+  overall: number;
   workLifeBalance: number;
-  culture:         number;
-  transportation:  number;
-  flexibility:     number;
-  headline:        string;
-  reviewText:      string;
-  jobReviewed:     string;
-  reviewerName:    string;
-  dateCreated:     Date;
+  culture: number;
+  transportation: number;
+  flexibility: number;
+  headline: string;
+  reviewText: string;
+  jobReviewed: string;
+  reviewerName: string;
+  dateCreated: Date;
 }
-
 
 const Detail = () => {
   const { jobId } = useParams();
@@ -81,23 +80,23 @@ const Detail = () => {
     axios
       .get(window.location.origin + "/api/jobs/" + jobId)
       .then((res) => {
-    
         setJob(res.data.data);
-        let ratings: number[] = res.data.data.ratingTotals.map((e:number) =>
+        let ratings: number[] = res.data.data.ratingTotals.map((e: number) =>
           Math.round(e / res.data.data.numberReviews)
         );
         setAvgRate(ratings);
-        axios.get(window.location.origin + "/api/reviews", {
-          params: {
-            where: {"jobReviewed":jobId},
-          },
-        })
-        .then((res) => {
-          setReviews(res.data.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        axios
+          .get(window.location.origin + "/api/reviews", {
+            params: {
+              where: { jobReviewed: jobId },
+            },
+          })
+          .then((res) => {
+            setReviews(res.data.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       })
       .catch(function (error) {
         console.log(error);
@@ -120,7 +119,7 @@ const Detail = () => {
                 <div className="left-top-property">
                   <Card.Title className="property-title">Job Type</Card.Title>
                   <Card.Text className="property-text">
-                    {job?.employmentType}
+                    {job.employmentType}
                   </Card.Text>
                 </div>
                 <div className="left-top-property">
@@ -128,7 +127,7 @@ const Detail = () => {
                     Weekly Hours
                   </Card.Title>
                   <Card.Text className="property-text">
-                    {job?.weeklyHours}
+                    {job.weeklyHours}
                   </Card.Text>
                 </div>
                 <div className="left-top-property">
@@ -180,20 +179,22 @@ const Detail = () => {
                 </Button>
               </Link>
               <Card id="student-review">
-                {reviews.map((review:Review) => (
+                {reviews.map((review: Review) => (
                   <Student
                     id={review._id}
                     date={new Date(review.dateCreated)}
                     name={review.reviewerName}
                     headline={review.headline}
                     review={review.reviewText}
-                    rate={[ review.overall,
-                            review.workLifeBalance,
-                            review.culture,
-                            review.transportation,
-                            review.flexibility]} />
-                  ))
-                }
+                    rate={[
+                      review.overall,
+                      review.workLifeBalance,
+                      review.culture,
+                      review.transportation,
+                      review.flexibility,
+                    ]}
+                  />
+                ))}
               </Card>
             </Card.Body>
           </Card>
